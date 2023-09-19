@@ -1,0 +1,213 @@
+// Here you can add other styles
+
+smart-menu {
+	--smart-menu-vertical-default-height: auto;
+	// --smart-font-size: 0.85rem;
+	// --smart-bar-width: 10px;
+}
+
+// smart-grid.smart-element {
+//   --smart-grid-row-height: 30px;
+// }
+
+body {
+	--smart-font-size: 0.85rem;
+  --smart-font-family: Roboto, "Helvetica Neue", sans-serif;
+
+	--smart-grid-default-width: 100%;
+	--smart-grid-default-height: 100%;
+  --smart-grid-column-header-height: 38px;
+
+	--smart-editor-default-height: 100%;
+
+	--smart-tabs-default-width: 100%;
+	--smart-tabs-default-height: auto;
+
+	--smart-combo-box-default-width: 100%;
+	--smart-text-box-default-width: 100%;
+
+	--smart-file-upload-default-width: 100%;
+
+  // --cui-offcanvas-width: 200px;
+
+  --smart-docking-layout-default-width: 100%;
+}
+
+div.smart-menu-item-label-element > span > i {
+	margin-right: 5px;
+}
+smart-file-upload {
+	min-height: 0px !important;
+}
+
+smart-menu:not(.smart-angular){
+  display: none;
+}
+
+.offcanvas.show {
+  transform: none !important;
+}
+.offcanvas {
+  width: 300px;
+}
+
+.smart-tab-label-text-container {
+	line-height: initial !important;
+}
+.smart-pager {
+	// min-width: 192px;
+}
+
+.imgResponsive{
+    display: block;
+    max-width: 100%;
+	height: auto;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.login-container {
+	min-height: 100vh;
+	display: flex;
+}
+
+.form-signin {
+	width: 100%;
+	max-width: 330px;
+	padding: 15px;
+	margin: auto;
+}
+
+.btn-danger {
+	--cui-btn-color: rgba(255, 255, 255, 0.87);
+	--cui-btn-hover-color: rgba(255, 255, 255, 0.87);
+	--cui-btn-active-color: rgba(255, 255, 255, 0.87);
+	--cui-btn-disabled-color: rgba(255, 255, 255, 0.87);
+}
+
+.hide-div {
+	display: none;
+}
+
+.error-text {
+	width: 100%;
+	margin-top: 0.25rem;
+	font-size: 80%;
+	color: #ff5454;
+}
+
+.notificationWrapper {
+	border-bottom: 1px solid #c2cfd6;
+	min-height: 75px;
+}
+.notiWrapperWhite { 
+		background-color: #ffffff;
+}
+.notiWrapperGray {
+	background-color: #ededed;
+}
+
+.notiWrapperRead { 
+	opacity: 0.5;
+	filter: alpha(opacity=50);
+}
+.notiWrapperUnread {
+	opacity: 1;
+	filter: alpha(opacity=100);
+}
+
+.notificationWrapper:hover {
+	background-color: theme-color("hover");
+	cursor: pointer;
+}
+
+.notificationListWrapper {
+	max-height: calc(100vh - 100px);
+	overflow-y: scroll;
+}
+
+.notiHeader {
+	font-size: 15px;
+	font-family: 'Calibri';
+}
+
+.notiMessage {
+	margin-bottom: 0.3rem;
+	font-size: 13px;
+}
+.notiFooter {
+	text-align: right;
+	font-size: 12px;
+}
+.notiButton {
+	border: none;
+	background: none;
+	cursor: pointer;
+	opacity: 0.7;
+	filter: alpha(opacity=70);
+}
+.notiButton:hover {
+  border: none;
+	background: none;
+  opacity: 100;
+	filter: alpha(opactiy=100);
+}
+.notiBadge:after{
+    content:attr(data-count);
+    position: absolute;
+    background: theme-color("primary");
+    height:1.3rem;
+    top:0.5rem;
+    right:0.3rem;
+    width:1.3rem;
+    text-align: center;
+    line-height: 1.3rem;;
+	font-size: 0.6rem;
+	font-family: 'Calibri';
+    border-radius: 50%;
+    color:white;
+    // border:1px solid blue;
+}
+.notiBadge[data-count="0"]:after{ 
+	display : none;
+}
+.notiToggler {
+	font-size: 20px;
+	color: #536c79;
+}
+.notiToggler:hover {
+	color: #000000;
+}
+
+button.close {
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.row-red {
+  background-color: var(--smart-background);
+  border-color: var(--smart-border);
+  color: red;
+}
+
+.row-default {
+  background-color: var(--smart-background);
+  color: var(--smart-background-color);
+  border-color: var(--smart-border);
+}
+
+.row-alt {
+  background-color: var(--smart-alternation-index0-background);
+  color: var(--smart-alternation-index0-color);
+  border-color: var(--smart-alternation-index0-border);
+}
+
+.row-alt-red {
+  background-color: var(--smart-alternation-index0-background);
+  color: red;
+  border-color: var(--smart-alternation-index0-border);
+}

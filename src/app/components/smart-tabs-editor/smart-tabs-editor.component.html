@@ -1,0 +1,187 @@
+<div id="tabs-editor-modal" class="modal fade" tabindex="-1" role="dialog">
+	<div class="modal-dialog modal-lg" style="max-width: 900px">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="modal-basic-title">{{ 'TABSEDITOR.TITLE' | translate }}</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+
+			<!-- Tabs Listing -->
+			<div [class.hide-div]="showTabDetail">
+				<div class="modal-body">
+					<div class="row">
+						<div class="col">
+
+              <div class="form-group row mb-2">
+                <label class="col-sm-3 col-form-label">{{ 'TABSEDITOR.LABEL.DEFAULTTAB' | translate }}: </label>
+                <div class="col-sm-9">
+                  <select class="form-select form-control" [(ngModel)]="this.tabData.detail.defaultTab">
+                    <option [ngValue]="0">{{ 'GENSELECT.NONSELECTED' | translate }}</option>
+                    <option [ngValue]="-1">{{ 'TABSEDITOR.LABEL.ALL' | translate }}</option>
+                    <option *ngFor="let tab of this.tabData.detail.tabs" [ngValue]="tab.id">{{ tab.name }}</option>
+                  </select>
+                </div>
+              </div>
+
+							<div [style.height]="gridHeight">
+								<smart-grid #gridTabs
+									(rowReorder)="gridTabsRowReorder($event)"
+									(rowDoubleClick)="gridTabsDoubleClick($event)"
+									[theme]="smartTheme"
+									[columns]="gridTabsColumns"
+									[dataSource]="gridTabsSource"
+									[appearance]="gridSettings.appearance"
+									[behavior]="gridSettings.behavior"
+									[selection]="gridSettings.selection">
+								</smart-grid>
+							</div>
+
+							<div class="btn-group" role="group">
+								<button class="btn btn-light" (click)="btRemoveClick($event)"><i class="far fa-minus"></i></button>
+								<button class="btn btn-light" (click)="btAddClick($event)"><i class="far fa-plus"></i></button>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="modal-footer">
+					<div class="w-100 d-flex justify-content-between">
+						<div>
+							<button type="button" class="btn btn-danger" aria-label="Close" (click)="modal('hide')">
+								{{ 'VIEWEDITOR.CANCEL' | translate }}
+							</button>
+						</div>
+						<div>
+							<button type="button" class="btn btn-success" aria-label="Ok" (click)="btSaveClick($event)">
+								{{ 'VIEWEDITOR.SAVECLOSE' | translate }}
+							</button>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<!-- Tab Detail -->
+			<div [class.hide-div]="!showTabDetail">
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-md-2"></div>
+
+						<div class="col">
+
+							<div class="form-group row mb-2">
+								<label class="col-sm-3 col-form-label form-label">{{ 'TABSEDITOR.LABEL.NAME' | translate }}: </label>
+								<div class="col-sm-9">
+									<input class="form-control" [(ngModel)]="selectedTab.name" [class.is-invalid]="hasError.name" (change)="validateField('name')">
+									<div [hidden]="!hasError.name" class="error-text">
+										{{ errorText.name }}
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group row mb-2">
+								<label class="col-sm-3 col-form-label">{{ 'TABSEDITOR.LABEL.TYPE' | translate }}: </label>
+								<div class="col-sm-9">
+									<select class="form-select form-control"
+									[(ngModel)]="selectedTab.type"
+									(change)="validateField('type')"
+									(change)="selectChanged('type')"
+									[class.is-invalid]="hasError.type">
+										<option value="">{{ 'GENSELECT.NONSELECTED' | translate }}</option>
+										<option *ngFor="let type of types" [value]="type">{{ type }}</option>
+									</select>
+									<div [hidden]="!hasError.type" class="error-text">
+										{{ errorText.type }}
+									</div>
+								</div>
+							</div>
+
+							<div [class.hide-div]="!(selectedTab.type === 'Lookup')">
+
+								<div class="form-group row mb-2">
+									<label class="col-sm-3 col-form-label">{{ 'TABSEDITOR.LABEL.FIELD' | translate }}: </label>
+									<div class="col-sm-9">
+										<select class="form-select form-control"
+											[(ngModel)]="selectedTab.fieldNum"
+											(change)="selectChanged('field')"
+											(change)="validateField('fieldNum')"
+											[class.is-invalid]="hasError.fieldNum">
+											<option [ngValue]="0">{{ 'GENSELECT.NONSELECTED' | translate }}</option>
+											<option *ngFor="let field of fields" [ngValue]="field.fieldNumber">{{ field.fieldName }}</option>
+										</select>
+										<div [hidden]="!hasError.fieldNum" class="error-text">
+											{{ errorText.fieldNum }}
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group row mb-2">
+									<label class="col-sm-3 col-form-label">{{ 'TABSEDITOR.LABEL.VALUE' | translate }}: </label>
+									<div class="col-sm-9">
+										<select class="form-select form-control"
+											[(ngModel)]="selectedTab.value"
+											(change)="selectChanged('value')"
+											(change)="validateField('value')"
+											[class.is-invalid]="hasError.value">
+											<option value="">{{ 'GENSELECT.NONSELECTED' | translate }}</option>
+											<option *ngFor="let value of valuesList" [value]="value.id">{{ value.value }}</option>
+										</select>
+										<div [hidden]="!hasError.value" class="error-text">
+											{{ errorText.value }}
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+							<div [class.hide-div]="!(selectedTab.type === 'Custom Query')">
+
+								<div class="form-group row mb-2">
+									<label class="col-sm-3 col-form-label">{{ 'TABSEDITOR.LABEL.QUERY' | translate }}: </label>
+									<div class="col-sm-9">
+										<select class="form-select form-control"
+										[(ngModel)]="selectedTab.queryId"
+										(change)="selectChanged('query')"
+										(change)="validateField('queryId')"
+										[class.is-invalid]="hasError.queryId">
+											<option value="">{{ 'GENSELECT.NONSELECTED' | translate }}</option>
+											<option *ngFor="let query of userQueries" [value]="query.id">{{ query.name }}</option>
+										</select>
+										<div [hidden]="!hasError.queryId" class="error-text">
+											{{ errorText.queryId }}
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+
+						<div class="col-md-2"></div>
+					</div>
+				</div>
+
+				<div class="modal-footer">
+					<div class="w-100 d-flex justify-content-between">
+						<div>
+							<button type="button" class="btn btn-danger" aria-label="Close" (click)="btCancelTabEdit()">
+								{{ 'VIEWEDITOR.CANCEL' | translate }}
+							</button>
+						</div>
+						<div>
+							<button type="button" class="btn btn-success" aria-label="Ok" (click)="btSaveTabEdit()">
+								{{ 'GENSELECT.OK' | translate }}
+							</button>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+
+		</div>
+	</div>
+</div>

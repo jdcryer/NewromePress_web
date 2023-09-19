@@ -1,0 +1,33 @@
+<div class="sidebar-wrapper">
+  <!-- Brand Image -->
+  <div class="brand-image-wrapper">
+    <a href="#/dashboard">
+      <img
+        [src]="brandImageSrc"
+        [width]="brandImageWidth"
+        [height]="brandImageHeight"
+        [alt]="brandImageAlt">
+    </a>
+  </div>
+
+  <!-- Nav Options -->
+
+  <div class="nav-options-wrapper">
+
+    <a *ngFor="let navItem of navItems"
+      class="sidebar-nav-item"
+      [routerLink]="navItem.url"
+      routerLinkActive="sidebar-nav-item-active">
+      <i [class]="navItem.icon" class="sidebar-nav-icon"></i>
+      {{ navItem.name }}
+    </a>
+
+  </div> 
+
+  <!-- Footer -->
+
+  <div class="sidebar-footer-wrapper">
+
+  </div>
+
+</div>

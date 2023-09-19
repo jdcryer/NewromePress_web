@@ -1,0 +1,97 @@
+<div id="view-editor-modal" class="modal fade" tabindex="-1" role="dialog">
+	<div class="modal-dialog modal-lg" style="max-width: 900px">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="modal-basic-title">{{ 'VIEWEDITOR.TITLE' | translate }}</h4>
+			</div>
+			<div [class.hideDiv]="vb_showColumnDetail">
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-sm-10">
+							<div class="form-group row">
+								<label for="viewName" class="col-sm-2 col-form-label">{{ 'VIEWEDITOR.VIEWNAME' | translate }}:</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" id="viewName" [(ngModel)]="viewData.name"/>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-2">
+							<div class="form-check col-form-label">
+								<input class="form-check-input" type="checkbox" value="" [(ngModel)]="viewData.default" id="viewDefault">
+								<label class="form-check-label" for="viewDefault">
+									{{ 'VIEWEDITOR.DEFAULT' | translate }}
+								</label>
+							</div>
+						</div>
+					</div>
+					<div *ngIf="adminEdit" class="row">
+						<div class="col-sm-10">
+							<div class="form-group row">
+								<label for="viewName" class="col-sm-2 col-form-label">{{ 'VIEWEDITOR.USER' | translate }}:</label>
+								<div class="col-sm-10">
+									<ng-select [items]="usersLookup" bindLabel="selectTag" [(ngModel)]="selectedUser" (change)="selectUserChange($event)"></ng-select>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-2"></div>
+					</div>
+					<div class="row my-2">
+						<div class="col-sm-5">
+							<select #selectTable class="form-control" (change)="selectTableChanged($event)">
+								<option *ngFor="let propList of propertyList">{{ propList.table }}{{ (propList.relation !== '') ? ' - ' + propList.relation : '' }}</option>
+							</select>
+							<div [style.height]="gridHeight">
+								<smart-grid #gridFields
+									(rowDoubleClick)="gridFieldsDoubleClick($event)"
+									[theme]="smartTheme"
+									[columns]="gridFieldsColumns"
+									[dataSource]="gridFieldsSource"
+									[appearance]="gridAppearance"
+									[selection]="gridSelection">
+								</smart-grid>
+							</div>
+						</div>
+						<div class="col-sm-7">
+							<div [style.height]="gridHeight">
+								<smart-grid #gridColumns
+									id="gridColumns"
+									(rowReorder)="gridColumnRowReorder($event)"
+									(rowDoubleClick)="gridColumnsDoubleClick($event)"
+									[theme]="smartTheme"
+									[columns]="gridColumnsColumns"
+									[dataSource]="gridColumnsSource"
+									[appearance]="gridColumnsAppearance"
+									[behavior]="gridColumnsBehavior"
+									[selection]="gridSelection">
+								</smart-grid>
+							</div>
+							<button class="btn btn-light" (click)="btRemoveClick($event)"><i class="far fa-minus"></i></button>
+							<button class="btn btn-light" (click)="btAddClick($event)"><i class="far fa-plus"></i></button>
+						</div>
+					</div>
+				</div>
+
+				<div class="modal-footer">
+					<div class="w-100 d-flex justify-content-between">
+						<div>
+							<button type="button" class="btn btn-danger" aria-label="Close" (click)="modal('hide')">
+								{{ 'VIEWEDITOR.CANCEL' | translate }}
+							</button>
+						</div>
+						<div>
+							<button type="button" class="btn btn-success" aria-label="Ok" (click)="btSaveClick($event)">
+								{{ 'VIEWEDITOR.SAVECLOSE' | translate }}
+							</button>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div [class.hideDiv]="!vb_showColumnDetail">
+				<app-smart-view-editor-column #columnEdit (editComplete)="columnEditComplete($event)"></app-smart-view-editor-column>
+			</div>
+		</div>
+	</div>
+</div>
+
+

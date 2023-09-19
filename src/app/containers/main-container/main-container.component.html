@@ -1,0 +1,38 @@
+
+<!-- sidebar -->
+
+<app-nav-sidebar #navSidebar
+  [brandImageSrc]="'assets/images/newrome_logo.svg'"
+  brandImageAlt="'SupportBase'"
+  [navItems]="navItems"
+></app-nav-sidebar>
+
+<!-- main -->
+
+<div class="main-wrapper d-flex flex-column min-vh-100">
+
+  <app-main-header class="main-header"></app-main-header>
+
+  <div class="container-fluid px-3 py-3 flex-grow-1">
+    <router-outlet></router-outlet>
+  </div>
+
+  <app-main-footer></app-main-footer>
+
+</div>
+
+
+
+<!-- notification aside -->
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasRightLabel">Notifications</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <!-- <app-notification-list></app-notification-list> -->
+  </div>
+</div>
+
+<app-toast-global></app-toast-global>

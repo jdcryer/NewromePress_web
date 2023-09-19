@@ -1,0 +1,36 @@
+<div class="d-flex justify-content-between">
+	<div class="btn-group" role="group">
+		<button *ngFor="let button of buttons | positionfilter:filterargsLeft" 
+			[id]="button.code"
+			class="btn btn-primary"
+			(click)="buttonClick($event)"
+			[disabled]="!button.enabled">
+			<span *ngIf="button.icon !== ''"><i [class]="button.icon"></i>&nbsp;</span>
+			{{ button.label }}
+		</button>
+	</div>
+
+	<div class="btn-group" role="group">
+		<button *ngFor="let button of buttons | positionfilter:filterargsCenter" 
+			[id]="button.code"
+			class="btn btn-primary"
+			(click)="buttonClick($event)"
+			[disabled]="!button.enabled">
+			<span *ngIf="button.icon !== ''"><i [class]="button.icon"></i>&nbsp;</span>
+			{{ button.label }}
+		</button>
+	</div>
+
+	<div class="btn-group" role="group">
+		<button *ngFor="let button of buttons | positionfilter:filterargsRight" 
+			[id]="button.code"
+			class="btn btn-primary"
+			(click)="buttonClick($event)"
+			[disabled]="!button.enabled">
+			<span *ngIf="button.icon !== ''"><i [class]="button.icon"></i>&nbsp;</span>
+			{{ button.label }}
+		</button>
+	</div>
+</div>
+
+

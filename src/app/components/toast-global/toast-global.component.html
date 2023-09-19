@@ -1,0 +1,6 @@
+<ngb-toast
+  *ngFor="let toast of messageBox.toasts" [class]="toast.classname"
+  [header]="toast.header" [autohide]="true" [delay]="toast.delay || 5000"
+  (hidden)="messageBox.remove(toast)">
+  <div [innerHTML]="toast.body | safe: 'html'"></div>
+</ngb-toast>

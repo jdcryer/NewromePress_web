@@ -3,7 +3,14 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  smartTheme: 'bootstrap',
+  lang: 'en',
+  usedHeight: 250,
+  apiSettings: {
+    endpoint: 'http://localhost:8080/app/'
+  },
+  baseUrlTemp: 'http://localhost:8080/'
 };
 
 /*

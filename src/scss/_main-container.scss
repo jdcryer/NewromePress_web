@@ -1,0 +1,108 @@
+$app-sidebar-width: 16rem;
+
+$app-header-height: 66px;
+$app-header-padding: 8px;
+
+$app-footer-height: 48px;
+$app-footer-padding: 6px;
+
+$app-nav-item-bg-color: #F4E3EE;
+// $app-nav-item-active-bg-color: lighten($app-nav-item-bg-color, 3%);
+$app-nav-item-active-bg-color: #f7ebf3;
+
+$app-nav-item-color: rgba(#B3282D, 0.8);
+$app-nav-item-active-color: rgba(#B3282D, .87);
+
+$app-sidebar-secondary-color: darken($app-nav-item-bg-color, 5%);
+
+.sidebar-wrapper {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: $app-sidebar-width;
+  display: flex;
+  flex-direction: column;
+};
+
+.main-wrapper {
+  padding-left: $app-sidebar-width;
+  background-color: $gray-300;
+};
+
+.header-wrapper {
+  height: $app-header-height;
+  background-color: $gray-100;
+  padding: $app-header-padding;
+};
+
+.main-header {
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+};
+
+.footer-wrapper {
+  background-color: $gray-400;
+  height: $app-footer-height;
+  padding: $app-footer-padding;
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+};
+
+.brand-image-wrapper {
+  background-color: $app-sidebar-secondary-color;
+  height: calc($app-header-height + $app-header-padding - 2px);
+  // min-height: calc($app-header-height + $app-header-padding);
+  // flex-basis: $app-header-height;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+};
+
+.nav-options-wrapper {
+  display: block;
+  height: 100%;
+  width: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: $app-nav-item-bg-color;
+};
+
+.sidebar-nav-item {
+  display: flex;
+  align-items: center;
+  padding: 0.85rem 1rem;
+  font-size: 0.85rem;
+  text-decoration:none;
+  font-weight: 500;
+  color: $app-nav-item-color;
+};
+
+.sidebar-nav-item-active {
+  color: $app-nav-item-active-color;
+  background-color: $app-nav-item-active-bg-color;
+};
+
+.sidebar-nav-item:hover {
+  color: $app-nav-item-active-color;
+  background-color: $app-nav-item-active-bg-color;
+};
+
+.sidebar-nav-icon {
+  height: 1.25rem;
+  flex: 0 0 4rem;
+  text-align: center;
+  font-size: 1.2rem;
+  margin-left: -1rem;
+}
+
+.sidebar-footer-wrapper {
+  background-color: $app-sidebar-secondary-color;
+  height: calc($app-footer-height + $app-footer-padding);
+  display: flex;
+};
+
+

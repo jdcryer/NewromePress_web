@@ -1,0 +1,22 @@
+<div class="login-container text-center">
+	<div class="card form-signin">
+		<div class="card-body">
+			<form>
+				<img class="mb-4 imgResponsive" src="./assets/images/project_logo.png">
+				<h1>SupportBase</h1>
+				<h2 class="mb-3">Please Sign in</h2>
+				<label for="inputUSername" class="sr-only">Username</label>
+				<input #inputUsername id="inputUsername" type="text" name="username" class="form-control" tabindex="1" placeholder="Username" (keydown.enter)="login(inputUsername.value, inputPassword.value)"/>
+				<label for="inputPassword" class="sr-only">Password</label>
+				<input #inputPassword id="inputPassword" type="password" name="password" class="form-control" tabindex="2" placeholder="Password" (keydown.enter)="login(inputUsername.value, inputPassword.value)"/>
+				<a routerLink="/reset-password">Forgotten your password?</a>
+				<div *ngIf="bLoginFailed" class="alert alert-danger mt-3">
+					Login Failed! Please check your credentials.
+				</div>
+				<div class="d-grid">
+					<button type="button" tabindex="3" class="btn btn-primary mt-3 mb-5" (click)="login(inputUsername.value, inputPassword.value)">Login</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

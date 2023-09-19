@@ -1,0 +1,172 @@
+<h3>{{ 'ADMINLOOKUP.TITLE' | translate }}</h3>
+<div class="row">
+
+	<div class="col-md-4">
+		<div class="form-group row">
+			<label class="col-sm-4 col-form-label">{{ 'ADMINLOOKUP.LABEL.FILTERCLIENT' | translate }}: </label>
+			<div class="col-sm-8">
+				<select class="form-select" [(ngModel)]="filterClient" (change)="filterChanged()">
+					<option value="">{{ 'GENSELECT.NONSELECTED' | translate }}</option>
+					<option *ngFor="let client of clients" [value]="client.id">{{ client.name }}</option>
+				</select>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+<smart-tabs>
+	<smart-tab-item label="Lists">
+		<div class="row mt-2">
+			<div class="col-md-5">
+				<div style="height: 380px">
+					<smart-grid #gridLookup
+						id="gridLookup"
+						[onLoad]="gridLookupAfterInit"
+						(rowClick)="gridLookupSelect($event)"
+						[theme]="smartTheme"
+						[dataSource]="gridLookupSource"
+						[columns]="gridLookupColumns"
+						[selection]="gridSettings.selection"
+						[behavior]="gridSettings.behavior"
+						[appearance]="gridSettings.appearance">
+					</smart-grid>
+				</div>
+
+				<div class="btn-group mt-2" role="group">
+					<button class="btn btn-primary" (click)="btNewLookup()"><span><i class="far fa-plus"></i></span></button>
+					<button class="btn btn-primary" (click)="btDeleteLookup()"><span><i class="far fa-minus"></i></span></button>
+				</div>
+
+			</div>
+
+			<div class="col-md-7">
+				<div class="row">
+					<div class="col-md-1"></div>
+
+					<div class="col-md-10">
+
+						<div class="row">
+							<div class="col-md-1"></div>
+							<div class="col-md-10">
+
+								<div class="form-group row mb-2">
+									<label class="col-sm-4 col-form-label form-label">{{ 'ADMINLOOKUP.LABEL.NAME' | translate }}: </label>
+									<div class="col-sm-8">
+										<input class="form-control" [(ngModel)]="selectedLookup.name" (change)="valueChanged()" [disabled]="editDisabled">
+									</div>
+								</div>
+
+								<div class="form-group row mb-2">
+									<label class="col-sm-4 col-form-label">{{ 'ADMINLOOKUP.LABEL.CLIENT' | translate }}: </label>
+									<div class="col-sm-8">
+										<select class="form-select form-control" [(ngModel)]="selectedLookup.fk_client" (change)="valueChanged()" [disabled]="editDisabled">
+											<option value="">{{ 'GENSELECT.NONSELECTED' | translate }}</option>
+											<option *ngFor="let client of clients" [value]="client.id">{{ client.name }}</option>
+										</select>
+									</div>
+								</div>
+
+							</div>
+							<div class="col-md-1"></div>
+						</div>
+
+						<div style="height: 300px">
+							<smart-grid #gridValue
+								id="gridValue"
+								(endEdit)="gridValueChange($event)"
+								[theme]="smartTheme"
+								[dataSource]="gridValueSource"
+								[columns]="gridValueColumns"
+								[selection]="gridSettings.selection"
+								[behavior]="gridSettings.behavior"
+								[appearance]="gridSettings.appearance"
+								[editing]="gridSettings.editing">
+							</smart-grid>
+						</div>
+
+						<div class="d-flex justify-content-between mt-2">
+							<div class="btn-group mt-2" role="group">
+								<button class="btn btn-primary" (click)="btAddValue()" [disabled]="editDisabled"><span><i class="far fa-plus"></i></span></button>
+								<button class="btn btn-primary" (click)="btDeleteValue()" [disabled]="editDisabled"><span><i class="far fa-minus"></i></span></button>
+							</div>
+
+							<button class="btn btn-primary" (click)="btSaveLookup()" [disabled]="!pendingChanges"><span><i class="far fa-save"></i>&nbsp; Save</span></button>
+						</div>
+					</div>
+
+					<div class="col-md-1"></div>
+				</div>
+			</div>
+
+		</div>
+	</smart-tab-item>
+
+	<smart-tab-item label="Mapping">
+
+		<div class="row">
+			<div class="col-lg-6">
+
+				<div style="height: 400px">
+					<smart-grid #gridLookupMapping
+						id="gridLookup"
+						(rowClick)="gridLookupMappingSelect($event)"
+						[theme]="smartTheme"
+						[dataSource]="gridLookupMappingSource"
+						[columns]="gridLookupMappingColumns"
+						[selection]="gridSettings.selection"
+						[behavior]="gridSettings.behavior"
+						[appearance]="gridSettings.appearance">
+					</smart-grid>
+				</div>
+
+				<div class="btn-group mt-2" role="group">
+					<button class="btn btn-primary" (click)="btAddMapping()"><span><i class="far fa-plus"></i></span></button>
+					<button class="btn btn-primary" (click)="btDeleteMapping()"><span><i class="far fa-minus"></i></span></button>
+				</div>
+
+			</div>
+
+			<div class="col-lg-6">
+
+				<div class="form-group row mb-2">
+					<label class="col-sm-4 col-form-label">{{ 'ADMINLOOKUP.LABEL.LIST' | translate }}: </label>
+					<div class="col-sm-8">
+						<select class="form-select form-control" [(ngModel)]="selectedLookupMapping.fk_lookupList" (change)="valueChangedMapping()" [disabled]="editDisabledMapping">
+							<option value="">{{ 'GENSELECT.NONSELECTED' | translate }}</option>
+							<option *ngFor="let lookupList of lookupLists" [value]="lookupList.id">{{ lookupList.name }}</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group row mb-2">
+					<label class="col-sm-4 col-form-label">{{ 'ADMINLOOKUP.LABEL.TABLE' | translate }}: </label>
+					<div class="col-sm-8">
+						<select class="form-select form-control" [(ngModel)]="selectedLookupMapping.tableNum"  (change)="valueChangedMapping('table')" [disabled]="editDisabledMapping">
+							<option value="0">{{ 'GENSELECT.NONSELECTED' | translate }}</option>
+							<option *ngFor="let table of tables" [ngValue]="table.tableNum">{{ table.tableName }}</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group row mb-2">
+					<label class="col-sm-4 col-form-label">{{ 'ADMINLOOKUP.LABEL.FIELD' | translate }}: </label>
+					<div class="col-sm-8">
+						<select class="form-select form-control" [(ngModel)]="selectedLookupMapping.fieldNum"  (change)="valueChangedMapping()" [disabled]="editDisabledMapping">
+							<option value="0">{{ 'GENSELECT.NONSELECTED' | translate }}</option>
+							<option *ngFor="let field of fields" [ngValue]="field.fieldNumber">{{ field.fieldName }}</option>
+						</select>
+					</div>
+				</div>
+
+				<button class="btn btn-primary" (click)="btSaveLookupMapping()" [disabled]="!pendingChangesMapping"><span><i class="far fa-save"></i>&nbsp; Save</span></button>
+
+			</div>
+
+		</div>
+
+	</smart-tab-item>
+
+</smart-tabs>
+

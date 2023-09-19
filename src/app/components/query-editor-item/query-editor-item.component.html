@@ -1,0 +1,63 @@
+<div class="d-flex justify-content-between mb-2">
+    <div class="inputSegment--l--bt">
+        <button class="btn btn-danger" (click)="buttonDeleteClick($event)">X</button>
+    </div>
+    <div class="inputSegment--bt">
+        <button [id]="lId" class="btn btn-outline-primary" data-toggle="button" (click)="buttonBracketClicked($event)">(</button>
+    </div>
+    
+    <div *ngIf="!isObjectField && !isEntityField" class="inputSegment">
+        <div class="form-group">
+            <select #selectField class="form-control" [(ngModel)]="lineData.field" (change)="selectFieldChange($event)">
+                <option *ngFor="let fieldDef of tableDefinition.fields">{{fieldDef.name}}</option>
+            </select>
+        </div>
+    </div>
+    <div *ngIf="isObjectField" class="d-flex justify-content-between inputSegment">
+        <div class="form-group inputSegment--l--sm" style="width: 100%">
+            <select #selectField class="form-control" [(ngModel)]="lineData.field" (change)="selectFieldChange($event)">
+                <option *ngFor="let fieldDef of tableDefinition.fields">{{fieldDef.name}}</option>
+            </select>
+        </div>
+        <div class="formGroup inputSegment--r--sm" style="width: 100%">
+            <input [(ngModel)]="lineData.attribute"  class="form-control" type="text"/>
+        </div>    
+    </div>
+    <div *ngIf="isEntityField" class="d-flex justify-content-between inputSegment">
+        <div class="form-group inputSegment--l--sm" style="width: 100%">
+            <select #selectField class="form-control" [(ngModel)]="lineData.field" (change)="selectFieldChange($event)">
+                <option *ngFor="let fieldDef of tableDefinition.fields">{{fieldDef.name}}</option>
+            </select>
+        </div>
+        <div class="formGroup inputSegment--r--sm" style="width: 100%">
+            <input [(ngModel)]="lineData.attribute"  class="form-control" type="text" list="fieldList"/>
+            <datalist id="fieldList">
+                <option *ngFor="let field of relatedFields">{{ field.name }}</option>
+            </datalist>
+        </div>    
+    </div>
+    <div class="form-group inputSegment--sm">
+        <select #selectOperator class="form-control" [(ngModel)]="lineData.operator">
+            <option *ngFor="let a of operators">{{a}}</option>
+        </select>
+    </div>
+    <div class="form-group inputSegment">
+        <div *ngIf="(fieldType === 'int' || fieldType === 'real' || fieldType === 'number') && lineData.operator !== 'Is in list'">
+            <input [(ngModel)]="lineData.value" class="form-control" type="number"/>
+        </div>
+        <div *ngIf="fieldType === 'string' || fieldType === 'object' || fieldType === 'bool' || fieldType === 'relatedEntity' || fieldType === 'relatedEntities' || lineData.operator === 'Is in list'">
+            <input [(ngModel)]="lineData.value" class="form-control" type="text"/>
+        </div>
+        <div *ngIf="fieldType === 'date' && lineData.operator !== 'Is in list'">
+            <input [(ngModel)]="lineData.value" class="form-control" type="date"/>
+        </div>
+    </div>
+    <div class="inputSegment--bt">
+        <button [id]="rId" class="btn btn-outline-primary" data-toggle="button" (click)="buttonBracketClicked($event)">)</button>
+    </div>
+    <div class="form-group inputSegment--r--sm">
+        <select #selectConjunction class="form-control" [ngModel]="lineData.conjunction" (ngModelChange)="lineData.conjunction = selectConjunctionChange($event)">
+            <option *ngFor="let a of conjunctors">{{a}}</option>
+        </select>
+    </div>  
+</div>

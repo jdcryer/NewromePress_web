@@ -1,0 +1,20 @@
+
+<div [style.height]="gridHeight" class="row">
+	<div class="col">
+		<smart-grid #smartGrid
+			id="smartGrid2"
+			[theme]="input.theme"
+			[dataSource]="input.dataSource"
+			[scrolling]="input.scrolling"
+			[columns]="input.columns"
+			[selection]="input.selection"
+			[behavior]="input.behavior"
+			[appearance]="input.appearance"
+			[sorting]="input.sorting"
+			(rowDoubleClick)="gridDoubleClick($event)"
+      (sort)="gridSort($event)"
+      [onRowClass]="gridRowClass">
+		</smart-grid>
+	</div>
+</div>
+

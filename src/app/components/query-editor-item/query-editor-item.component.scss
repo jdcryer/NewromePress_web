@@ -1,0 +1,33 @@
+.inputSegment {
+    padding: 0 0.5rem 0 0.5rem;
+    width: 100%;
+
+    &--l {
+        @extend .inputSegment;
+        padding-left: 0;
+        &--bt {
+            @extend .inputSegment--l;
+            width: inherit;
+        }
+    }
+
+    &--r {
+        @extend .inputSegment;
+        padding-right: 0;
+        &--sm {
+            @extend .inputSegment--r;
+            width: 40%;
+        }
+        &--bt {
+            @extend .inputSegment--r;
+            width: inherit;
+        }
+    }
+
+    &--sm {
+        @extend .inputSegment;
+        width: 40%;
+    }
+}
+
+

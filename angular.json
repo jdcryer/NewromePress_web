@@ -31,9 +31,16 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "node_modules/smart-webcomponents-angular/source/styles/smart.default.css",
+              "node_modules/smart-webcomponents-angular/source/styles/bootstrap/light/smart.bootstrap.css",
+              "node_modules/@fortawesome/fontawesome-pro/css/all.min.css",
+              "src/scss/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+							"node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
           },
           "configurations": {
             "production": {

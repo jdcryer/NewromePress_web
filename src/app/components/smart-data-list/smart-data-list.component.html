@@ -1,0 +1,224 @@
+<div class="row mb-2">
+	<div [class.col-xl-8]="!hideFilterInput && !hideRecordCount" [class.col-xl-12]="hideFilterInput && hideRecordCount" [class.col-xl-10]="hideFilterInput || hideRecordCount">
+		<div class="btn-group" role="group" style="flex-wrap: wrap;">
+      <ng-container *ngFor="let button of buttons">
+        <ng-container [ngSwitch]="button.code">
+
+
+          <button *ngSwitchCase="'NEW'" class="btn btn-primary"
+            (click)="btNewClicked($event)"
+            [disabled]="newDisabled">
+            <span><i class="far fa-plus"></i></span>&nbsp;{{ 'BUTTON.NEW' | translate }}
+          </button>
+
+          <button *ngSwitchCase="'SHOWALL'" class="btn btn-primary"
+            (click)="btShowAllClicked($event)">
+            <span><i class="far fa-stream"></i></span>&nbsp;{{ 'BUTTON.SHOWALL' | translate }}
+          </button>
+
+          <button *ngSwitchCase="'SHOWSUBSET'" class="btn btn-primary"
+            (click)="btShowSubsetClicked($event)">
+            <span><i class="far fa-stream"></i></span>&nbsp;{{ 'BUTTON.SHOWSUBSET' | translate }}
+          </button>
+
+          <button *ngSwitchCase="'OMITSUBSET'" class="btn btn-primary"
+            (click)="btOmitSubsetClicked($event)">
+            <span><i class="far fa-stream"></i></span>&nbsp;{{ 'BUTTON.OMITSUBSET' | translate }}
+          </button>
+      
+          <ng-container *ngSwitchCase="'QUERY'">
+            <button *ngIf="gridDef.queryList.length === 0" class="btn btn-primary"
+              (click)="btQueryClicked($event)">
+              <span><i class="far fa-search"></i></span>&nbsp;{{ 'BUTTON.QUERY' | translate }}
+            </button>
+
+            <button id="queryMenuButton" *ngIf="gridDef.queryList.length > 0" class="btn btn-primary" 
+              (click)="btMenuClicked($event, 'query')"
+              [disabled]="gridDef.queryList.length === 0">
+              <span><i class="far fa-search"></i></span>&nbsp;{{ 'BUTTON.QUERY' | translate }}&nbsp;<span><i class="far fa-chevron-down fa-sm"></i></span>
+            </button>
+          </ng-container>
+
+          <button *ngSwitchCase="'PRINT'" id="printMenuButton" class="btn btn-primary"
+            (click)="btMenuClicked($event, 'print')"
+            [disabled]="gridDef.printList.length === 0">
+            <span><i class="far fa-print"></i></span>&nbsp;{{ 'BUTTON.PRINT' | translate }}&nbsp;<span><i class="far fa-chevron-down fa-sm"></i></span>
+          </button>
+
+          <button *ngSwitchCase="'ACTION'" id="actionMenuButton" class="btn btn-primary"
+            (click)="btMenuClicked($event, 'action')"
+            [disabled]="gridDef.actionList.length === 0">
+            <span><i class="far fa-cogs"></i></span>&nbsp;{{ 'BUTTON.ACTION' | translate }}&nbsp;<span><i class="far fa-chevron-down fa-sm"></i></span>
+          </button>
+
+          <button *ngSwitchCase="'VIEW'" id="viewMenuButton" class="btn btn-primary"
+            (click)="btMenuClicked($event, 'view')">
+            <span><i class="far fa-eye"></i></span>&nbsp;{{ 'BUTTON.VIEW' | translate }}&nbsp;<span><i class="far fa-chevron-down fa-sm"></i></span>
+          </button>
+
+          <button *ngSwitchCase="'RELATE'" id="relateMenuButton" class="btn btn-primary"
+            (click)="btMenuClicked($event, 'relate')"
+            [disabled]="relateCount.length === 0">
+            <span><i class="far fa-sitemap"></i></span>&nbsp;{{ 'BUTTON.RELATE' | translate }}&nbsp;<span><i class="far fa-chevron-down fa-sm"></i></span>
+          </button>
+
+          <button *ngSwitchDefault [id]="button.code" class="btn btn-primary"
+            (click)="genericButtonClicked($event)"
+            [disabled]="!button.enabled">
+            <span *ngIf="button.icon !== ''"><i [class]="button.icon"></i>&nbsp;</span>
+            {{ button.label }}
+          </button>
+
+
+        </ng-container>
+      </ng-container>
+		</div>
+	</div>
+
+  <div [class.hide-div]="hideFilterInput" class="col-xl-2">
+    <div class="input-group">
+      <input class="form-control" type="text" [(ngModel)]="simpleFilterValue" [placeholder]="'DATALIST.FILTER' | translate" (change)="simpleFilterChange()"/>
+      <div class="input-group-append">
+        <button id="searchHistMenuButton" class="btn btn-primary" type="button" 
+          (click)="btMenuClicked($event, 'simpleSearch')"
+          [disabled]="(simpleFilterHistory.length == 0)">
+          <span><i class="far fa-search"></i></span>&nbsp;<span><i class="far fa-chevron-down fa-sm"></i></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div [class.hide-div]="hideRecordCount" class="col-xl-2">
+    <div class="input-group">
+      <input class="form-control" type="text" [(ngModel)]="recordsFound" readonly/>
+    </div>
+  </div>
+
+	<!-- <div class="col-xl-4">
+		<div class="row">
+			<div class="col-md-7">
+				<div class="input-group">
+					<input class="form-control" type="text" [(ngModel)]="simpleFilterValue" [placeholder]="'DATALIST.FILTER' | translate" (change)="simpleFilterChange()"/>
+					<div class="input-group-append">
+						<button id="searchHistMenuButton" class="btn btn-primary" type="button" 
+							(click)="btMenuClicked($event, 'simpleSearch')"
+							[disabled]="(simpleFilterHistory.length == 0)">
+							<span><i class="far fa-search"></i></span>&nbsp;<span><i class="far fa-chevron-down fa-sm"></i></span>
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-5">
+				<div class="input-group">
+					<input class="form-control" type="text" [(ngModel)]="recordsFound" readonly/>
+				</div>
+			</div>
+		</div>
+	</div> -->
+
+</div>
+
+<div [class.hide-div]="hideTabBar || (gridDef.tabList.length == 0)" class="row">
+	<div class="col">
+		<div class="card" style="border: 0px">
+			<div class="d-flex justify-content-between">
+				<ul ngbNav #nav="ngbNav" (navChange)="tabClicked($event)" class="nav-tabs" [(activeId)]="selectedTabId">
+					<li *ngFor="let tab of gridDef.tabList" [ngbNavItem]="tab.id">
+						<a *ngIf="(tab.type === 'Lookup') || (tab.type === 'all')" ngbNavLink>{{ tab.name }} ({{ tab.recordCount }})</a>
+						<a *ngIf="!((tab.type === 'Lookup') || (tab.type === 'all'))" ngbNavLink>{{ tab.name }}</a>
+					</li>
+				</ul>
+				<div>
+					<button style="height: 100%" class="btn btn-primary" (click)="btEditTabsClick()">
+						<span><i class="far fa-edit"></i></span>&nbsp;{{ 'BUTTON.EDIT' | translate }}
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- <div [style.height]="gridHeight" class="row mt-2">
+	<div class="col">
+		<smart-grid #smartGrid
+			id="smartGrid"
+			(rowDoubleClick)="gridDoubleClick($event)"
+			[theme]="smartTheme"
+			[dataSource]="gridSource"
+			[scrolling]="'virtual'"
+			[columns]="gridDef.viewData.detail.columns"
+			[selection]="gridSettings.selection"
+			[behavior]="gridSettings.behavior"
+			[appearance]="gridSettings.appearance"
+			[sorting]="gridSettings.sorting">
+		</smart-grid>
+	</div>
+</div>
+
+<button (click)="createGrid()">Click me</button> -->
+
+<div [style.height]="gridHeight" class="row">
+	<div class="col">
+		<ng-template dataGrid></ng-template>
+	</div>
+</div>
+
+<smart-menu #menuAction
+	(itemClick)="menuItemClick($event, 'action')"
+	[dataSource]="gridDef.actionList" 
+	[theme]="smartTheme"
+	[mode]="'dropDown'"
+  [opened]="false"
+	[animation]="'simple'">
+</smart-menu>
+
+<smart-menu #menuPrint
+	(itemClick)="menuItemClick($event, 'print')"
+	[dataSource]="gridDef.printList" 
+	[theme]="smartTheme"
+	[mode]="'dropDown'"
+  [opened]="false"
+	[animation]="'simple'">
+</smart-menu>
+
+<smart-menu #menuQuery
+	(itemClick)="menuItemClick($event, 'query')"
+	[dataSource]="gridDef.queryList" 
+	[theme]="smartTheme"
+	[mode]="'dropDown'"
+  [opened]="false"
+	[animation]="'simple'">
+</smart-menu>
+
+<smart-menu #menuView
+	(itemClick)="menuItemClick($event, 'view')"
+	[dataSource]="gridDef.viewList" 
+	[theme]="smartTheme"
+	[mode]="'dropDown'"
+  [opened]="false"
+	[animation]="'simple'">
+</smart-menu>
+
+<smart-menu #menuSimpleSearch
+	(itemClick)="menuItemClick($event, 'simpleSearch')"
+	[dataSource]="simpleFilterHistory" 
+	[theme]="smartTheme"
+	[mode]="'dropDown'"
+  [opened]="false"
+	[animation]="'simple'">
+</smart-menu>
+
+<smart-menu #menuRelate
+	(itemClick)="menuItemClick($event, 'relate')"
+	[dataSource]="relateMenuSource" 
+	[theme]="smartTheme"
+	[mode]="'dropDown'"
+  [opened]="false"
+	[animation]="'simple'">
+</smart-menu>
+
+<app-query-editor-v2 #queryEditor (queryComplete)="queryComplete($event)"></app-query-editor-v2>
+<app-smart-view-editor #viewEditor (viewEditComplete)="viewEditComplete($event)" [targetResource]="targetResource"></app-smart-view-editor>
+<app-smart-tabs-editor #tabsEditor [targetResource]="targetResource" (tabsUpdated)="tabsUpdate($event)"></app-smart-tabs-editor>
+<a id="atag_Link" style="display: none" href="" download="..."></a>

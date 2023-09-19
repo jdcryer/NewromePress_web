@@ -1,0 +1,107 @@
+<div class="modal-body">
+	<div class="form-group row mb-2">
+		<label for="columnHeader" class="col-sm-2 col-form-label">{{ VIEWCOLUMNEDITOR.HEADER }}:</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="columnHeader" [(ngModel)]="columnData.header"/>
+		</div>
+	</div>
+
+	<div *ngIf="columnData.fieldType === 'object'" class="form-group row mb-2">
+		<label for="columnAttr" class="col-sm-2 col-form-label">{{ VIEWCOLUMNEDITOR.ATTRIBUTE }}:</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="columnAttr" [(ngModel)]="columnData.attribute"/>
+		</div>
+	</div>
+
+	<div class="form-group row mb-2">
+		<label for="widthValue" class="col-sm-2 col-form-label">{{ VIEWCOLUMNEDITOR.WIDTH }}:</label>
+		<div class="col-sm-6">
+			<input type="number" class="form-control" id="widthValue" [(ngModel)]="columnData.width"/>
+		</div>
+		<div class="col-sm-4">
+			<select id="widthUnit" class="form-control" [(ngModel)]="columnData.widthUnit">
+				<option>px</option>
+				<option>%</option>
+			</select>
+		</div>
+	</div>
+
+  <div class="form-group row mb-2">
+		<label for="displayFormat" class="col-sm-2 col-form-label">{{ VIEWCOLUMNEDITOR.DISPLAYFORMAT }}:</label>
+		<div class="col-sm-10">
+      <div class="input-group">
+        <input type="text" class="form-control" id="displayFormat" [(ngModel)]="columnData.displayFormat"/>
+        <button class="btn btn-primary" type="button" (click)="infoClick()"><span class="far fa-circle-info"></span></button>
+      </div>
+		</div>
+	</div>
+
+	<h6>{{ VIEWCOLUMNEDITOR.ALIGNMENT }}</h6>
+	<div class="row mx-5 mb-3">
+		<div class="col-sm-3">
+			<div class="form-check">
+				<input class="form-check-input" type="radio" name="alignmentRadios" id="alignmentRadios1" (change)="onAlignmentChange('left')" [checked]="columnData.alignment === 'left'">
+				<label class="form-check-label" for="alignmentRadios1">
+					{{ VIEWCOLUMNEDITOR.ALIGNLEFT }}
+				</label>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="form-check">
+				<input class="form-check-input" type="radio" name="alignmentRadios" id="alignmentRadios1" (change)="onAlignmentChange('center')" [checked]="columnData.alignment === 'center'">
+				<label class="form-check-label" for="alignmentRadios1">
+					{{ VIEWCOLUMNEDITOR.ALIGNCENTER }}
+				</label>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="form-check">
+				<input class="form-check-input" type="radio" name="alignmentRadios" id="alignmentRadios1" (change)="onAlignmentChange('right')" [checked]="columnData.alignment === 'right'">
+				<label class="form-check-label" for="alignmentRadios1">
+					{{ VIEWCOLUMNEDITOR.ALIGNRIGHT }}
+				</label>
+			</div>
+		</div>
+	</div>
+	<!-- <h6>{{ VIEWCOLUMNEDITOR.AGGREGATE }}</h6>
+	<div class="row mx-5 mb-3">
+		<div class="col-sm">
+			<div class="form-check">
+				<input class="form-check-input" type="checkbox" value="" [(ngModel)]="columnData.min" id="viewDefault">
+				<label class="form-check-label" for="viewDefault">
+					{{ VIEWCOLUMNEDITOR.MIN }}
+				</label>
+			</div>
+		</div>
+		<div class="col-sm">
+			<div class="form-check">
+				<input class="form-check-input" type="checkbox" value="" [(ngModel)]="columnData.max" id="viewDefault">
+				<label class="form-check-label" for="viewDefault">
+					{{ VIEWCOLUMNEDITOR.MAX }}
+				</label>
+			</div>
+		</div>
+		<div class="col-sm">
+			<div class="form-check">
+				<input class="form-check-input" type="checkbox" value="" [(ngModel)]="columnData.sum" id="viewDefault">
+				<label class="form-check-label" for="viewDefault">
+					{{ VIEWCOLUMNEDITOR.SUM }}
+				</label>
+			</div>
+		</div>
+		<div class="col-sm">
+			<div class="form-check">
+				<input class="form-check-input" type="checkbox" value="" [(ngModel)]="columnData.avg" id="viewDefault">
+				<label class="form-check-label" for="viewDefault">
+					{{ VIEWCOLUMNEDITOR.AVG }}
+				</label>
+			</div>
+		</div>
+	</div> -->
+</div>
+<div class="modal-footer">
+	<div class="w-100 d-flex justify-content-between">
+		<div><button type="button" class="btn btn-danger" aria-label="Close" (click)="btCancelClick($event)">{{ VIEWCOLUMNEDITOR.CANCEL }}</button></div>
+		<div><button type="button" class="btn btn-success" aria-label="Ok" (click)="btOkClick($event)">{{ VIEWCOLUMNEDITOR.OK }}</button><div>
+	</div>
+</div>

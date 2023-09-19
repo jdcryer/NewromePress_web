@@ -1,0 +1,23 @@
+<div class="notificationWrapper" [attr.class]="wrapperClass" (click)="notificationClick($event)">
+	<div class="p-2">
+		<div class="d-flex justify-content-between">
+			<div>
+				<h5 class="notiHeader"><i [class]="iconClass"></i> {{ notificationData.title }}</h5>
+			</div>
+			<div>
+				<button [id]="'delete' + myIndex" type="button" class="close" aria-label="Close" (click)="deleteThis($event)" data-bs-toggle="tooltip" data-bs-placement="left" title="Delete"><span aria-hidden="true">&times;</span></button>
+			</div>
+		</div>
+		<div class="">
+			<p class="notiMessage">{{ notificationData.message }}</p>
+		</div>
+		<div class="notiFooter d-flex justify-content-between">
+			<div>
+				<span>{{notiAge}}</span>
+			</div>
+			<div>
+				<button [id]="'markAs' + myIndex" type="button" class="px-0 notiButton" aria-label="Mark As Read" data-bs-toggle="tooltip" data-bs-placement="left" [title]="markAsReadTooltip" (click)="markAsRead($event)"><i [attr.class]="markAsReadIcon"></i></button>
+			</div>
+		</div>
+	</div>
+</div>

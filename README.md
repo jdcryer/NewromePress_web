@@ -1,27 +1,84 @@
-# NewromePress
+![angular](https://img.shields.io/badge/angular-^13.3.0-lightgrey.svg?style=flat-square&logo=angular)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
+# NewromePress Admin
 
-## Development server
+## Adding New View Modules via ng generate
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+Generate a new "resource".module.ts and "resource"-routing.module.ts with the below command.
+Below examples all use the value 'scan-item'. This should be replaced with your resource name.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```bash
+ng generate module views/scan-item --route views/scan-item --module app.module
+```
 
-## Build
+This can also be shorted slightly like so
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+ng g m views/scan-item --route views/scan-item --module app.module
+```
 
-## Running unit tests
+This will generate a 'scan-item' folder in 'views' with 6 files because this command also creates a 'scan-item' component that we do not need
+So, first delete the following four files:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+views/scan-item/scan-item.component.html
+views/scan-item/scan-item.component.scss
+views/scan-item/scan-item.component.ts
+views/scan-item/scan-item.component.spec.ts
+```
 
-## Running end-to-end tests
+Then remove any refereces to 'ScanItemComponent' from scan-item.module.ts and scan-item-routing.module.ts
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Now, make ammendments to app-routing.module.ts so our new module is loaded as a child of the DefaultLayout
 
-## Further help
+```javascript
+{
+	path: '',
+	component: DefaultLayoutComponent,
+	data: { title: 'Home' },
+	resolve: { navBar: NavBarResolver },
+	children: [
+		//Other modules ...
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+		//Add this object
+		{
+			path: 'scan-item',
+			loadChildren: () =>
+				import ('./views/scan-item/scan-item.module').then((m) => m.ScanItemModule),
+		}
+	],
+},
+//Delete this object that was automatically created
+{ path: 'views/scan-item', loadChildren: () => import('./views/scan-item/scan-item.module').then(m => m.ScanItemModule) },
+```
+
+Next, create the components we want to keep.
+
+The below example uses two commands to create a listing and detail component and import them into our scan-item module
+
+```bash
+ng g c views/scan-item/scan-item-listing --module views/scan-item
+ng g c views/scan-item/scan-item-detail --module views/scan-item
+```
+
+Now add references to these two components to scan-item-routing.module.ts
+
+```javascript
+{ path: '', redirectTo: 'scan-item-listing' },
+{
+	path: 'scan-item-listing',
+	component: ScanItemListingComponent,
+	resolve: { lang: LangResolverService, gridDef: GridDefResolverService }
+},
+{
+	path: 'scan-item-detail/:id',
+	component: ScanItemDetailComponent,
+	resolve: { data: DetailResolverService },
+},
+{
+	path: 'scan-item-detail',
+	component: ScanItemDetailComponent
+}
+```
+
