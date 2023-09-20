@@ -1,1 +1,149 @@
-<p>task-detail works!</p>
+<app-button-bar [buttons]="buttons" [resource]="'task'"></app-button-bar>
+
+<div class="row mt-4">
+	<div class="col-lg-6">
+
+		<div class="card">
+			<div class="card-header">
+
+				<div class="form-group row">
+					<label class="col-md-2 col-form-label form-label">{{ 'TASKDETAIL.LABEL.SUBJECT' | translate }}: </label>
+					<div class="col-md-8">
+						<input class="form-control" [(ngModel)]="taskData.subject" (change)="valueChanged($event)" [disabled]="editDisabled">
+					</div>
+				</div>
+                <div class="form-group row mt-2">
+                    <label class="col-md-2 col-form-label form-label">{{ 'TASKDETAIL.LABEL.DUEDATE' | translate }}: </label>
+                    <div class="col-md-4">
+                        <input class="form-control" [(ngModel)]="taskData.dueDate" (change)="valueChanged($event)" [disabled]="editDisabled">
+                    </div>
+                </div>
+                <div class="form-group row mt-2">
+                    <label class="col-md-2 col-form-label form-label">{{ 'TASKDETAIL.LABEL.DUEDATE' | translate }}: </label>
+                    <div class="col-md-4">
+                        <input class="form-control" [(ngModel)]="taskData.dueDate" (change)="valueChanged($event)" [disabled]="editDisabled">
+                    </div>
+                </div>
+                <div class="form-group row mt-2">
+                    <label class="col-md-2 col-form-label form-label">{{ 'TASKDETAIL.LABEL.DUEDATE' | translate }}: </label>
+                    <div class="col-md-4">
+                        <input class="form-control" [(ngModel)]="taskData.dueDate" (change)="valueChanged($event)" [disabled]="editDisabled">
+                    </div>
+                </div>
+                <div class="form-group row mt-2">
+                    <label class="col-md-2 col-form-label form-label">{{ 'TASKDETAIL.LABEL.DUEDATE' | translate }}: </label>
+                    <div class="col-md-4">
+                        <input class="form-control" [(ngModel)]="taskData.dueDate" (change)="valueChanged($event)" [disabled]="editDisabled">
+                    </div>
+                </div>
+                <div class="form-group row mt-2">
+                    <label class="col-md-2 col-form-label form-label">{{ 'TASKDETAIL.LABEL.DUEDATE' | translate }}: </label>
+                    <div class="col-md-4">
+                        <input class="form-control" [(ngModel)]="taskData.dueDate" (change)="valueChanged($event)" [disabled]="editDisabled">
+                    </div>
+                </div>
+ 			</div>
+		</div>
+	</div>
+    <div class="col-lg-6">
+		<div class="card">
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label form-label">{{ 'TASKDETAIL.LABEL.DESCRIPTION' | translate }}: </label>
+            </div>
+			<div class="card-header">
+                <div class="form-group row mt-2">
+                    <div class="col-md-12">
+                        <textarea class="form-control" [(ngModel)]="taskData.description" (change)="valueChanged($event)" [disabled]="editDisabled" rows="8"> </textarea>
+                    </div>
+                </div>
+
+			</div>
+		</div>
+	</div>
+    <div class="row mt-4">
+        <div class="col-lg-12">
+            <smart-tabs animation="none">
+                <smart-tab-item label="Communications">
+                    <div class="card-group">
+                        <div class="card me-2">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-end">
+                                    <div class="btn-group my-2" role="group">
+                                        <button class="btn btn-primary" (click)="btnNewComm()"><span><i class="far fa-plus"></i></span></button>
+                                        <button class="btn btn-primary" (click)="btDeleteComm()"><span><i class="far fa-minus"></i></span></button>
+                                    </div>
+                                </div>
+                                <div  style="height: 190px">
+                                    <smart-grid #file
+                                        id="commsList"
+                                        (rowClick)="commClick($event)"
+                                        [theme]="smartTheme"
+                                        [dataSource]="taskData.detail.response"
+                                        [columns]="commColumns"
+                                        [appearance]="gridSettings.appearance"
+                                        [behavior]="gridSettings.behavior"
+                                        [selection]="gridSettings.selection"
+                                        [editing]="gridSettings.editing">
+                                    </smart-grid>
+                                </div>
+                            </div>
+                        </div>    
+                        <div class="card ms-2">
+                            <div class="card-body">
+                                <label class="col-md-2 col-form-label form-label">{{ 'COMMDETAIL.LABEL.NOTE' | translate }}: </label>
+                                <div class="col-md-12">
+                                    <picture>
+                                        <!-- Here we need to load a preview of the selected document if possible, otherwise set a noImage image. -->
+                                        <source srcset="..." type="image/svg+xml">
+                                        <!-- <img src="..." class="img-fluid" alt="..."> -->
+                                      </picture>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </smart-tab-item>
+                <smart-tab-item label="Files">
+                    <div class="card-group">
+                        <div class="card me-2">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-end">
+                                    <div class="btn-group my-2" role="group">
+                                        <button class="btn btn-primary" (click)="btnNewFile()"><span><i class="far fa-plus"></i></span></button>
+                                        <button class="btn btn-primary" (click)="btDeleteFile()"><span><i class="far fa-minus"></i></span></button>
+                                    </div>
+                                </div>
+                                <div  style="height: 190px">
+                                    <smart-grid #file
+                                        id="fileList"
+                                        (rowClick)="fileClick($event)"
+                                        [theme]="smartTheme"
+                                        [dataSource]="fileList"
+                                        [columns]="fileColumns"
+                                        [appearance]="gridSettings.appearance"
+                                        [behavior]="gridSettings.behavior"
+                                        [selection]="gridSettings.selection"
+                                        [editing]="gridSettings.editing">
+                                    </smart-grid>
+                                </div>
+                            </div>
+                        </div>    
+                        <div class="card ms-2">
+                            <div class="card-body">
+                                <label class="col-md-2 col-form-label form-label">{{ 'FILEDETAIL.LABEL.PREVIEW' | translate }}: </label>
+                                <div class="col-md-12">
+                                    <picture>
+                                        <!-- Here we need to load a preview of the selected document if possible, otherwise set a noImage image. -->
+                                        <source srcset="..." type="image/svg+xml">
+                                        <!-- <img src="..." class="img-fluid" alt="..."> -->
+                                      </picture>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </smart-tab-item>
+            </smart-tabs>
+    
+        </div>
+    </div>
+    
+</div>

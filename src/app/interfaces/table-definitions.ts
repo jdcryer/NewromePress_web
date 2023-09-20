@@ -1,47 +1,52 @@
 import { StringLiteral } from "typescript/lib/tsserverlibrary";
 
-export interface ITicket {
+export interface ITask {
 	id?: string;
-	fk_contact: string;
-	fk_user_technician: string;
-	fk_user_company: string;
-	title: string;
-	state: string;
-  progress: string;
-	priority: string;
-	queue: string;
-	cause: string;
-	createdTS: string;
-	closedTS: string;
-	lastUpdateTS: string;
-	closingStatement: string;
-	detail: { attachments: IAttachment[] };
-	ticket_ticketMessage?: ITicketMessage[];
-	ticket_contact?: IContact;
+	fk_title: string;
+	fk_contactAssigned: string;
+	subject: string;
+	description: string;
+	dueDate: string;
+	createdBy: string;
+	sentDate: string;
+	completeDate: string;
+	detail: {response:IComm[]};
+	task_file?: ITaskFile[];
+	task_contactAssigned?: IContact;
+	task_title?: ITitle;
 }
 
-export interface IAttachment {
-	filename: string;
-	fileMime: string;
+export interface ITaskFile {
+	name: string;
+	path: string;
+	fileType: string;
+	detail: {};
 }
 
-export function newTicket(): ITicket {
+export interface ITitle {
+	id?: string;
+	name: string;
+	description: string;
+	originalTitle: string;
+	series: boolean;
+	volume: string;
+	seriesTitle: string;
+	pseudonym: string;
+	detail: {};
+}
+
+export function newTask(): ITask {
 	return {
-		fk_contact: '',
-		fk_user_technician: '',
-		fk_user_company: '',
-		title: '',
-		state: '',
-    progress: '',
-		priority: '',
-		queue: '',
-		cause: '',
-		createdTS: '',
-		closedTS: '',
-		lastUpdateTS: '',
-		closingStatement: '',
-		detail: { attachments: [] },
-		ticket_ticketMessage: []
+		fk_title: '',
+		fk_contactAssigned: '',
+		subject: '',
+		description: '',
+		dueDate: '',
+		createdBy: '',
+		sentDate: '',
+		completeDate: '',
+		detail: {response:[]},
+		task_file: []
 	};
 }
 
@@ -66,69 +71,38 @@ export function newTicketMessage(): ITicketMessage {
 	}
 };
 
-export interface IChange {
+export interface IFile {
 	id?: string;
-	fk_user_owner: string;
-	fk_user_developer: string;
-	title: string;
-	status: string;
-	priority: string;
-	area: string;
-	version: string;
-	requestedTS: string;
-	expectedTS: string;
-	completedTS: string;
-	lastUpdateTS: string;
-	closingTitle: string;
-	closingSummary: string;
-	companiesFor: string;
-	detail: { attachments: IAttachment[] };
-	change_changeMessage?: IChangeMessage[];
-}
+	fk_table: string;
+	fk_record: string;
+	name: string;
+	path: string;
+	fileType: string;
+  }
+  
+  export function newFile(): IFile {
+	  return {
+	  fk_table: '',
+	  fk_record: '',
+	  name: '',
+	  path: '',
+	  fileType: ''
+	  }
+  };
 
-export function newChange(): IChange {
-	return {
-		fk_user_owner: '',
-		fk_user_developer: '',
-		title: '',
-		status: '',
-		priority: '',
-		area: '',
-		version: '',
-		requestedTS: '',
-		expectedTS: '',
-		completedTS: '',
-		lastUpdateTS: '',
-		closingTitle: '',
-		closingSummary: '',
-		companiesFor: '',
-		detail: { attachments: [] }
-	};
-}
-
-export interface IChangeMessage {
-	id?: string;
-	fk_change: string;
-	fk_user: string;
-	title: string;
-	content: string;
-	type: string;
-	createdTS: string;
-	detail: any;
-	changeMessage_user?: IUser;
-}
-
-export function newChangeMessage(): IChangeMessage {
-	return {
-		fk_change: '',
-		fk_user: '',
-		title: '',
-		content: '',
-		type: '',
-		createdTS: '',
-		detail: {}
-	};
-};
+  export interface IComm {
+	direction: string;
+	date: string;
+	text: string;
+  }
+  
+  export function newComm(): IComm {
+	  return {
+	  direction: '',
+	  date: '',
+	  text: ''
+	  }
+  };
 
 export interface ILookupList { 
 	id?: string;

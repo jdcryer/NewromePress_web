@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
 							if(response.prefs.lang){
 								this.translate.use(response.prefs.lang);
 							}
-							this.route.navigate([ 'dashboard' ]);
+							this.route.navigate([ 'task' ]);
 						}
 					}
 				}, null, null, false, httpOptions);

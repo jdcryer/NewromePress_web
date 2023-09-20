@@ -202,26 +202,29 @@
           "ACTIVE": "Active"
       }
   },
-  "BRANDEDETAIL": {
-      "LABEL": {
-          "BRANDNAME": "Brand Name"
-      }
+
+  "COMMDETAIL": {
+    "LABEL": {
+        "NOTE": "Note"
+    }
   },
-  "TICKETDETAIL": {
+
+  "FILEDETAIL": {
+    "LABEL": {
+        "PREVIEW": "Preview"
+    }
+  },
+
+  "TASKDETAIL": {
       "LABEL": {
-          "TITLE": "Title",
-          "CONTACT": "Contact",
-          "TECHNICIAN": "Technician",
-          "QUEUE": "Queue",
-          "STATE": "State",
-          "PRIORITY": "Priority",
-          "CAUSE": "Cause",
-          "CREATEDATE": "Created Date",
-          "CLOSEDATE": "Closed Date",
-          "LASTUPDATE": "Last Update",
-          "ATTACHMENTS": "Attachments",
-          "COMPANY": "Company",
-          "PROGRESS": "Progress"
+          "SUBJECT": "Subject",
+          "DESCRIPTION": "Description",
+          "DUEDATE": "Due Date",
+          "CREATEDBY": "Created By",
+          "ASSIGNEDTO": "Assigned To",
+          "SENTDATE": "Sent Date",
+          "COMPLETEDDATE": "Completed Date",
+          "DETAIL": "Detail"
       }
   },
   "TABSEDITOR": {
