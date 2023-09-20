@@ -44,6 +44,10 @@ smart-menu:not(.smart-angular){
   display: none;
 }
 
+.smart-grid-sm {
+  --smart-font-size: 0.74375rem;
+};
+
 .offcanvas.show {
   transform: none !important;
 }

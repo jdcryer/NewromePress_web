@@ -9,6 +9,7 @@ import { ButtonBarModule } from 'src/app/components/button-bar/button-bar.module
 import { TranslateModule } from '@ngx-translate/core';
 import { GridModule } from 'smart-webcomponents-angular/grid';
 import { TabsModule } from 'smart-webcomponents-angular/tabs';
+import { SafePipeModule } from 'safe-pipe';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { TabsModule } from 'smart-webcomponents-angular/tabs';
     TranslateModule,
     GridModule,
     TabsModule,
+    SafePipeModule,
   ]
 })
 export class TaskModule { }

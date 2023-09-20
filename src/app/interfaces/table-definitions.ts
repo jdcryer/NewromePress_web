@@ -1,5 +1,3 @@
-import { StringLiteral } from "typescript/lib/tsserverlibrary";
-
 export interface ITask {
 	id?: string;
 	fk_title: string;
@@ -14,6 +12,21 @@ export interface ITask {
 	task_file?: ITaskFile[];
 	task_contactAssigned?: IContact;
 	task_title?: ITitle;
+}
+
+export function newTask(): ITask {
+	return {
+		fk_title: '',
+		fk_contactAssigned: '',
+		subject: '',
+		description: '',
+		dueDate: '',
+		createdBy: '',
+		sentDate: '',
+		completeDate: '',
+		detail: {response:[]},
+		task_file: []
+	};
 }
 
 export interface ITaskFile {
@@ -35,20 +48,18 @@ export interface ITitle {
 	detail: {};
 }
 
-export function newTask(): ITask {
+export function newTitle(): ITitle {
 	return {
-		fk_title: '',
-		fk_contactAssigned: '',
-		subject: '',
+		name: '',
 		description: '',
-		dueDate: '',
-		createdBy: '',
-		sentDate: '',
-		completeDate: '',
-		detail: {response:[]},
-		task_file: []
+		originalTitle: '',
+		series: false,
+		volume: '',
+		seriesTitle: '',
+		pseudonym: '',
+		detail: {},
 	};
-}
+};
 
 export interface ITicketMessage {
 	id?: string;
@@ -78,31 +89,32 @@ export interface IFile {
 	name: string;
 	path: string;
 	fileType: string;
-  }
-  
-  export function newFile(): IFile {
-	  return {
-	  fk_table: '',
-	  fk_record: '',
-	  name: '',
-	  path: '',
-	  fileType: ''
-	  }
-  };
+	cdnUrl?: string;
+}
 
-  export interface IComm {
+export function newFile(): IFile {
+	return {
+	fk_table: '',
+	fk_record: '',
+	name: '',
+	path: '',
+	fileType: ''
+	}
+};
+
+export interface IComm {
 	direction: string;
 	date: string;
 	text: string;
-  }
-  
-  export function newComm(): IComm {
-	  return {
-	  direction: '',
-	  date: '',
-	  text: ''
-	  }
-  };
+}
+	
+	export function newComm(): IComm {
+		return {
+		direction: '',
+		date: '',
+		text: ''
+		}
+	};
 
 export interface ILookupList { 
 	id?: string;
@@ -190,7 +202,7 @@ export function newCompany(): ICompany {
 	return {
 		fk_client: '',
 		name: '',
-    companyType: '',
+		companyType: '',
 		active: true,
 		addressBusiness: newAddress(),
 		addressDelivery: newAddress(),
@@ -202,7 +214,7 @@ export interface ICompany {
 	id?: string;
 	fk_client: string;
 	name: string;
-  companyType: string;
+	companyType: string;
 	active: boolean;
 	addressBusiness: IAddress;
 	addressDelivery: IAddress;
@@ -215,14 +227,13 @@ export function newContact(): IContact {
 	return {
 		fk_company: '',
 		title: '',
-		initials: '',
 		forename: '',
 		surname: '',
+		middlename: '',
 		jobTitle: '',
-		email: '',
-		telephone: '',
-		mobile: '',
-		active: true,
+		contactType: '',
+		department: '',
+		note: '',
 		detail: {}
 	}
 };
@@ -231,15 +242,15 @@ export interface IContact {
 	id?: string;
 	fk_company: string;
 	title: string;
-	initials: string;
-	forename: string;	
+	forename: string;
 	surname: string;
+	middlename: string;
 	jobTitle: string;
-	email: string;
-	telephone: string;
-	mobile: string;
+	contactType: string;
+	department: string;
+	note: string;
 	detail: any;
-	active: boolean;
+	salutation?: string;
 }
 
 export function newClient(): IClient {
@@ -266,7 +277,7 @@ export interface IHost {
 	name: string;
 	prefix: string;
 	addInfo: string;
-  active: boolean;
+	active: boolean;
 	detail: {
 		departments: IHostDepartment[]
 	};
@@ -306,7 +317,7 @@ export function newHost(): IHost {
 		name: '',
 		prefix: '',
 		addInfo: '',
-    active: false,
+		active: false,
 		detail: {
 			departments: []
 		}
@@ -452,7 +463,7 @@ export interface IServerUsage {
 	deactivatedTS: string;
 	addInfo: string;
 	detail: {
-    backupTime: string;
+		backupTime: string;
 		reservedMemory: number;
 		cacheMemory: number;
 		minimumMemory: number;
@@ -493,7 +504,7 @@ export function newServerUsage(): IServerUsage {
 		deactivatedTS: '',
 		addInfo: '',
 		detail: {
-      backupTime: '',
+			backupTime: '',
 			reservedMemory: 0,
 			cacheMemory: 0,
 			minimumMemory: 0,
@@ -515,12 +526,12 @@ export function newServerUsage(): IServerUsage {
 }
 
 export interface INotification {
-  id: string;
-  fk_user: string;
-  fk_record: string;
-  title: string;
-  type: string;
-  message: string;
-  createdTS: string;
-  read: boolean;
+	id: string;
+	fk_user: string;
+	fk_record: string;
+	title: string;
+	type: string;
+	message: string;
+	createdTS: string;
+	read: boolean;
 };

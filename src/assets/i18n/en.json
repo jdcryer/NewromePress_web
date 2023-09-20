@@ -1,362 +1,363 @@
 {
-  "NAVBAR": {
-      "DASHBOARD": "Dashboard",
-      "BRAND": "Brands",
-      "PRODUCTS": "Products",
-      "PRICE": "Prices",
-      "SALE": "Sales",
-      "FILE": "Files",
-      "STORE": "Stores",
-      "LOGOUT": "Logout",
-      "ORDER": "Orders",
-      "WAREHOUSE": "Warehouse",
-      "STOCK": "Stock",
-      "ENRICHMENT": "Enrichment List",
-      "ADMIN": "Admin",
-      "BRANDSTORE": "Brand Store",
-      "COMPANY": "Company",
-      "COMPANIES": "Companies",
-      "TRANSFER": "Transfers",
-      "CONTACTS": "Contacts",
-      "PRODUCT": "Product",
-      "APILOG": "API Log",
-      "WEBSALES": "Web Sales",
-      "CONCESSION": "Concession"
-  },
-  "BUTTON": {
-      "NEW": "New",
-      "SHOWALL": "Show All",
-      "SHOWSUBSET": "Show Subset",
-      "OMITSUBSET": "Omit Subset",
-      "QUERY": "Query",
-      "PRINT": "Print",
-      "ACTION": "Actions",
-      "VIEW": "Views",
-      "EXIT": "Exit",
-      "SAVE": "Save",
-      "OK": "OK",
-      "RESET": "Reset",
-      "APPLYCHANGES": "Apply Changes",
-      "ENRICHGUIDE": "Enrichment Guide",
-      "VALIDATE": "Validate",
-      "RELATE": "Relate",
-      "SEARCH": "Search",
-      "EXPORT": "Export",
-      "EDIT": "Edit"
-  },
-  "DATALIST": {
-      "FILTER": "Filter"
-  },
-  "QUERYEDITOR": {
-      "TITLE": "Query Editor",
-      "OK": "OK",
-      "RESET": "Reset",
-      "CANCEL": "Cancel",
-      "LOADQUERY": "Load Query",
-      "NAME": "Query Name"
-  },
-  "VIEWEDITOR": {
-      "TITLE": "View Management",
-      "SAVECLOSE": "Save & Close",
-      "CANCEL": "Cancel",
-      "VIEWNAME": "View Name",
-      "DEFAULT": "Default View",
-      "USER": "User",
-      "RESET": "Reset",
-      "OK": "OK"
-  },
-  "VIEWCOLUMNEDITOR": {
-      "TITLE": "Column Settings",
-      "OK": "OK",
-      "CANCEL": "Cancel",
-      "HEADER": "Header",
-      "AGGREGATE": "Aggregates",
-      "SUM": "Sum",
-      "MIN": "Min",
-      "MAX": "Max",
-      "AVG": "Average",
-      "ALIGNLEFT": "Left",
-      "ALIGNCENTER": "Center",
-      "ALIGNRIGHT": "Right",
-      "ALIGNMENT": "Alignment",
-      "WIDTH": "Width",
-      "WIDTHUNIT": "Unit",
-      "ATTRIBUTE": "Attribute",
-      "DISPLAYFORMAT": "Display Format"
-  },
-  "GENSELECT": {
-      "CANCEL": "Cancel",
-      "OK": "OK",
-      "NONSELECTED": "- None Selected -",
-      "RESET": "Reset"
-  },
-  "ADMINVIEWS": {
-      "TITLE": "View Management",
-      "LABEL": { 
-          "FILTERNAME": "Filter by Name",
-          "FILTERUSERNAME": "Username",
-          "FILTERHANDLE": "Handle"
-      }
-  },
-  "ADMINLOOKUP": {
-      "TITLE": "Lookup Management",
-      "LABEL": {
-          "FILTERCLIENT": "Filter by Client",
-          "FILTERTYPE": "Filter by Type",
-          "CLIENT": "Client",
-          "TYPE": "Type",
-          "NAME": "Name",
-          "LIST": "Lookup List",
-          "TABLE": "Table",
-          "FIELD": "Field"
-      }
-  },
-  "ADMINTABS": {
-    "TITLE": "Tabs Management"
-  },
-  "ADMIN": {
-    "LABEL": {
-      "LASTLICENSE": "Last License Number"
-    }
-  },
-  "SCHEDULER": {
-    "TITLE": "Scheduler Settings",
-    "TAB": {
-      "SETTINGS": "General Settings",
-      "SCHEDULE": "Schedule",
-      "ACTIONS": "Actions"
-    },
-    "LABEL": {
-      "NAME": "Name",
-      "DATE": "Date",
-      "TIME": "Time",
-      "PROCESSSIZE": "Process Size",
-      "INACTIVEFAIL": "Set Inactive on Fail",
-      "LASTLAUNCH": "Last Launch",
-      "LASTCOMPLETED": "Last Completed",
-      "NEXTLAUNCH": "Next Launch",
-      "FREQUENCY": "Frequency",
-      "EVERY": "Every",
-      "DAYS": "Day(s)",
-      "WEEKS": "Week(s)",
-      "MONTHS": "Month(s)",
-      "TIMING": "Timing Detail",
-      "AT": "At",
-      "ATINTERVAL": "Intervals of",
-      "FROM": "From",
-      "TO": "To",
-      "ON": "On",
-      "ONTHE": "On the",
-      "PARAMETERS": "Parameters"
-    }
-  },
-  "CHANGEDETAIL": {
-      "LABEL": {
-          "VERSION": "Version",
-          "TITLE": "Title",
-          "USEROWNER": "Owner",
-          "USERDEV": "Developer",
-          "STATUS": "Status",
-          "PRIORITY": "Priority",
-          "AREA": "Area",
-          "EXPECTDATE": "Expected Date",
-          "LASTUPDATE": "Last Update",
-          "REQUESTDATE": "Requested Date",
-          "COMPLETEDATE": "Completed Date",
-          "CLOSINGSTATEMENT": "Closing Statement",
-          "ATTACHMENTS": "Attachments",
-          "COMPANIESFOR": "Companies For"
-      }
-  },
-  "COMPANYDETAIL": {
-      "LABEL": {
-          "ID": "ID",
-          "NAME": "Company Name",
-          "ADDRESSBUS": "Main Address",
-          "ADDRESSDEL": "Delivery Address",
-          "ACTIVE": "Active",
-          "ADD1": "Add Line 1",
-          "ADD2": "Add Line 2",
-          "ADD3": "Add Line 3",
-          "TOWN": "Town",
-          "COUNTY": "County",
-          "POSTCODE": "Postcode",
-          "EMAIL": "Email",
-          "TELEPHONE": "Telephone",
-          "COUNTRY": "Country",
-          "CONTACTS": "Contacts",
-          "TYPE": "Type"
-      }
-  },
-  "CONTACTDETAIL": {
-      "LABEL": {
-          "NAME": "Name",
-          "TITLE": "Title",
-          "INITIALS": "Initials",
-          "FORENAME": "Forename",
-          "SURNAME": "Surname",
-          "JOBTITLE": "Job Title",
-          "EMAIL": "Email",
-          "TELEPHONE": "Telephone",
-          "MOBILE": "Mobile",
-          "ACTIVE": "Active"
-      }
-  },
+	"NAVBAR": {
+			"DASHBOARD": "Dashboard",
+			"BRAND": "Brands",
+			"PRODUCTS": "Products",
+			"PRICE": "Prices",
+			"SALE": "Sales",
+			"FILE": "Files",
+			"STORE": "Stores",
+			"LOGOUT": "Logout",
+			"ORDER": "Orders",
+			"WAREHOUSE": "Warehouse",
+			"STOCK": "Stock",
+			"ENRICHMENT": "Enrichment List",
+			"ADMIN": "Admin",
+			"BRANDSTORE": "Brand Store",
+			"COMPANY": "Company",
+			"COMPANIES": "Companies",
+			"TRANSFER": "Transfers",
+			"CONTACTS": "Contacts",
+			"PRODUCT": "Product",
+			"APILOG": "API Log",
+			"WEBSALES": "Web Sales",
+			"CONCESSION": "Concession"
+	},
+	"BUTTON": {
+			"NEW": "New",
+			"SHOWALL": "Show All",
+			"SHOWSUBSET": "Show Subset",
+			"OMITSUBSET": "Omit Subset",
+			"QUERY": "Query",
+			"PRINT": "Print",
+			"ACTION": "Actions",
+			"VIEW": "Views",
+			"EXIT": "Exit",
+			"SAVE": "Save",
+			"OK": "OK",
+			"RESET": "Reset",
+			"APPLYCHANGES": "Apply Changes",
+			"ENRICHGUIDE": "Enrichment Guide",
+			"VALIDATE": "Validate",
+			"RELATE": "Relate",
+			"SEARCH": "Search",
+			"EXPORT": "Export",
+			"EDIT": "Edit"
+	},
+	"DATALIST": {
+			"FILTER": "Filter"
+	},
+	"QUERYEDITOR": {
+			"TITLE": "Query Editor",
+			"OK": "OK",
+			"RESET": "Reset",
+			"CANCEL": "Cancel",
+			"LOADQUERY": "Load Query",
+			"NAME": "Query Name"
+	},
+	"VIEWEDITOR": {
+			"TITLE": "View Management",
+			"SAVECLOSE": "Save & Close",
+			"CANCEL": "Cancel",
+			"VIEWNAME": "View Name",
+			"DEFAULT": "Default View",
+			"USER": "User",
+			"RESET": "Reset",
+			"OK": "OK"
+	},
+	"VIEWCOLUMNEDITOR": {
+			"TITLE": "Column Settings",
+			"OK": "OK",
+			"CANCEL": "Cancel",
+			"HEADER": "Header",
+			"AGGREGATE": "Aggregates",
+			"SUM": "Sum",
+			"MIN": "Min",
+			"MAX": "Max",
+			"AVG": "Average",
+			"ALIGNLEFT": "Left",
+			"ALIGNCENTER": "Center",
+			"ALIGNRIGHT": "Right",
+			"ALIGNMENT": "Alignment",
+			"WIDTH": "Width",
+			"WIDTHUNIT": "Unit",
+			"ATTRIBUTE": "Attribute",
+			"DISPLAYFORMAT": "Display Format"
+	},
+	"GENSELECT": {
+			"CANCEL": "Cancel",
+			"OK": "OK",
+			"NONSELECTED": "- None Selected -",
+			"RESET": "Reset"
+	},
+	"ADMINVIEWS": {
+			"TITLE": "View Management",
+			"LABEL": { 
+					"FILTERNAME": "Filter by Name",
+					"FILTERUSERNAME": "Username",
+					"FILTERHANDLE": "Handle"
+			}
+	},
+	"ADMINLOOKUP": {
+			"TITLE": "Lookup Management",
+			"LABEL": {
+					"FILTERCLIENT": "Filter by Client",
+					"FILTERTYPE": "Filter by Type",
+					"CLIENT": "Client",
+					"TYPE": "Type",
+					"NAME": "Name",
+					"LIST": "Lookup List",
+					"TABLE": "Table",
+					"FIELD": "Field"
+			}
+	},
+	"ADMINTABS": {
+		"TITLE": "Tabs Management"
+	},
+	"ADMIN": {
+		"LABEL": {
+			"LASTLICENSE": "Last License Number"
+		}
+	},
+	"SCHEDULER": {
+		"TITLE": "Scheduler Settings",
+		"TAB": {
+			"SETTINGS": "General Settings",
+			"SCHEDULE": "Schedule",
+			"ACTIONS": "Actions"
+		},
+		"LABEL": {
+			"NAME": "Name",
+			"DATE": "Date",
+			"TIME": "Time",
+			"PROCESSSIZE": "Process Size",
+			"INACTIVEFAIL": "Set Inactive on Fail",
+			"LASTLAUNCH": "Last Launch",
+			"LASTCOMPLETED": "Last Completed",
+			"NEXTLAUNCH": "Next Launch",
+			"FREQUENCY": "Frequency",
+			"EVERY": "Every",
+			"DAYS": "Day(s)",
+			"WEEKS": "Week(s)",
+			"MONTHS": "Month(s)",
+			"TIMING": "Timing Detail",
+			"AT": "At",
+			"ATINTERVAL": "Intervals of",
+			"FROM": "From",
+			"TO": "To",
+			"ON": "On",
+			"ONTHE": "On the",
+			"PARAMETERS": "Parameters"
+		}
+	},
+	"CHANGEDETAIL": {
+			"LABEL": {
+					"VERSION": "Version",
+					"TITLE": "Title",
+					"USEROWNER": "Owner",
+					"USERDEV": "Developer",
+					"STATUS": "Status",
+					"PRIORITY": "Priority",
+					"AREA": "Area",
+					"EXPECTDATE": "Expected Date",
+					"LASTUPDATE": "Last Update",
+					"REQUESTDATE": "Requested Date",
+					"COMPLETEDATE": "Completed Date",
+					"CLOSINGSTATEMENT": "Closing Statement",
+					"ATTACHMENTS": "Attachments",
+					"COMPANIESFOR": "Companies For"
+			}
+	},
+	"COMPANYDETAIL": {
+			"LABEL": {
+					"ID": "ID",
+					"NAME": "Company Name",
+					"ADDRESSBUS": "Main Address",
+					"ADDRESSDEL": "Delivery Address",
+					"ACTIVE": "Active",
+					"ADD1": "Add Line 1",
+					"ADD2": "Add Line 2",
+					"ADD3": "Add Line 3",
+					"TOWN": "Town",
+					"COUNTY": "County",
+					"POSTCODE": "Postcode",
+					"EMAIL": "Email",
+					"TELEPHONE": "Telephone",
+					"COUNTRY": "Country",
+					"CONTACTS": "Contacts",
+					"TYPE": "Type"
+			}
+	},
+	"CONTACTDETAIL": {
+			"LABEL": {
+					"NAME": "Name",
+					"TITLE": "Title",
+					"INITIALS": "Initials",
+					"FORENAME": "Forename",
+					"SURNAME": "Surname",
+					"JOBTITLE": "Job Title",
+					"EMAIL": "Email",
+					"TELEPHONE": "Telephone",
+					"MOBILE": "Mobile",
+					"ACTIVE": "Active"
+			}
+	},
 
-  "COMMDETAIL": {
-    "LABEL": {
-        "NOTE": "Note"
-    }
-  },
+	"COMMDETAIL": {
+		"LABEL": {
+				"NOTE": "Note"
+		}
+	},
 
-  "FILEDETAIL": {
-    "LABEL": {
-        "PREVIEW": "Preview"
-    }
-  },
+	"FILEDETAIL": {
+		"LABEL": {
+				"PREVIEW": "Preview"
+		}
+	},
 
-  "TASKDETAIL": {
-      "LABEL": {
-          "SUBJECT": "Subject",
-          "DESCRIPTION": "Description",
-          "DUEDATE": "Due Date",
-          "CREATEDBY": "Created By",
-          "ASSIGNEDTO": "Assigned To",
-          "SENTDATE": "Sent Date",
-          "COMPLETEDDATE": "Completed Date",
-          "DETAIL": "Detail"
-      }
-  },
-  "TABSEDITOR": {
-      "TITLE": "Tabs Editor",
-      "LABEL": {
-          "NAME": "Tab Name",
-          "TYPE": "Tab Type",
-          "FIELD": "Lookup Field",
-          "VALUE": "Lookup Value",
-          "QUERY": "Custom Query",
-          "DEFAULTTAB": "Default Tab",
-          "ALL": "All"
-      }
-  },
-  "SERVERS": {
-      "LABEL": {
-          "SERVERS": "Servers",
-          "USAGE": "Usage",
-          "SERVERSETTINGS": "Server Settings",
-          "USAGESETTINGS": "Usage Settings",
-          "NAME": "Name",
-          "IP": "IP Address",
-          "MAXUSERS": "Max Users",
-          "USEDUSERS": "Used Users",
-          "MAXMEMORY": "Max Memory",
-          "USEDMEMORY": "Used Memory",
-          "COMPANY": "Company",
-          "BRAND": "Brand",
-          "APPPORT": "App Port",
-          "HTTPPORT": "HTTP Port",
-          "LICENSE": "License Number",
-          "USERS": "Users",
-          "ACTIVE": "Active",
-          "DEACTIVATEDAT": "Deactivated At",
-          "MEMORYALLOWANCE": "Memory Allowance",
-          "MEMORYRESERVED": "Reserved Memory",
-          "MEMORYCACHE": "% Memory Cache",
-          "MEMORYMINIMUM": "Minimum Memory",
-          "CURRENTILEVEL": "Current i.LEVEL",
-          "LASTILEVEL": "Last i.LEVEL",
-          "4DSERVER": "4D Server",
-          "DATEUPDATE": "Date Updated",
-          "LASTDATEUPDATED": "Last Date Updated",
-          "MOBILE": "Mobile",
-          "STORECONTROLLER": "Store Controller",
-          "AUTOBARCODE": "Auto Barcode",
-          "MANUALBARCODE": "Manual Barcode",
-          "MULTIBARCODE": "Multi Barcode",
-          "SEARCHTITLE": "Search for Usage",
-          "ONSTOP": "On Stop",
-          "BACKUPTIME": "Backup Time"
-      },
-      "BUTTON": {
-          "SAVE": "Save Changes",
-          "SEARCH": "Search",
-          "REPORTING": "Reporting"
-      }
-  },
-  "RELEASENOTES": {
-      "LABEL": {
-          "SEARCH": "Search",
-          "GENERATE": "Generate",
-          "FROMVERSION": "From Version",
-          "TOVERSION": "To Version",
-          "EDITCLOSING": "Edit Closing Statement",
-          "TITLE": "Title",
-          "SUMMARY": "Summary"
-      }
-  },
-  "HOSTDETAIL": {
-      "LABEL": {
-          "CODE": "Host Code",
-          "NAME": "Host Name",
-          "PREFIX": "Host Prefix"
-      }
-  },
-  "DEPARTMENTDETAIL": {
-      "LABEL": {
-          "DEPARTMENTNAME": "Department Name",
-          "ACCOUNTNAME": "Account Name",
-          "FTPURL": "FTP URL",
-          "SALESUSER": "Sales User",
-          "SALESPASS": "Sales Password",
-          "SALESPROCESSTIME": "Sales Process Time",
-          "PLUUSER": "PLU User",
-          "PLUPASS": "PLU Password",
-          "PLUPROCESSTIME": "PLU Process Time"
-      }
-  },
-  "HOSTBRANDDETAIL": {
-      "LABEL": {
-          "HOST": "Host",
-          "DEPARTMENTCODE": "Department Code",
-          "SUBDEPARTMENTCODE": "Sub Department Code",
-          "SUBDEPARTMENTNAME": "Sub Department Name",
-          "DUMPCODE": "Dump Code",
-          "EANPREFIX": "EAN Prefix",
-          "FTPURL": "FTP URL",
-          "FTPUSER": "FTP Username",
-          "FTPPASS": "FTP Password",
-          "FILENAMEEXAMPLE": "Filename Example",
-          "INACTIVEDATE": "Inactive Date",
-          "ACTIVE": "Active",
-          "WEB": "Web",
-          "STORES": "Stores"
-      }
-  },
-  "NOTIFICATION": {
-    "MARKALL": "Mark All as Read",
-    "LOADMORE": "Load More",
-    "NOMORE": "None Remaining",
-    "NONE": "No Notifications found!",
-    "OPTION": {
-      "ALL": "All",
-      "READ": "Read",
-      "UNREAD": "Unread"
-    }
-  },
-  "SEARCHCHANGE": {
-    "TITLE": "Change Request Search"
-  },
-  "SEARCHTICKET": {
-    "TITLE": "Ticket Search",
-    "CREATEDDATE": "Created Date",
-    "FROM": "From",
-    "TO": "To"
-  },
-  "TICKETAPPLYSELECTION": {
-    "TITLE": "Apply Selection"
-  },
-  "TICKETCLOSE": {
-    "TITLE": "Close Ticket",
-    "CLOSINGSTATEMENT": "Closing Statement"
-  }
+	"TASKDETAIL": {
+		"LABEL": {
+			"SUBJECT": "Subject",
+			"TITLE": "Title",
+			"DESCRIPTION": "Description",
+			"DUEDATE": "Due Date",
+			"CREATEDBY": "Created By",
+			"ASSIGNEDTO": "Assigned To",
+			"SENTDATE": "Sent Date",
+			"COMPLETEDDATE": "Completed Date",
+			"DETAIL": "Detail"
+		}
+	},
+	"TABSEDITOR": {
+			"TITLE": "Tabs Editor",
+			"LABEL": {
+					"NAME": "Tab Name",
+					"TYPE": "Tab Type",
+					"FIELD": "Lookup Field",
+					"VALUE": "Lookup Value",
+					"QUERY": "Custom Query",
+					"DEFAULTTAB": "Default Tab",
+					"ALL": "All"
+			}
+	},
+	"SERVERS": {
+			"LABEL": {
+					"SERVERS": "Servers",
+					"USAGE": "Usage",
+					"SERVERSETTINGS": "Server Settings",
+					"USAGESETTINGS": "Usage Settings",
+					"NAME": "Name",
+					"IP": "IP Address",
+					"MAXUSERS": "Max Users",
+					"USEDUSERS": "Used Users",
+					"MAXMEMORY": "Max Memory",
+					"USEDMEMORY": "Used Memory",
+					"COMPANY": "Company",
+					"BRAND": "Brand",
+					"APPPORT": "App Port",
+					"HTTPPORT": "HTTP Port",
+					"LICENSE": "License Number",
+					"USERS": "Users",
+					"ACTIVE": "Active",
+					"DEACTIVATEDAT": "Deactivated At",
+					"MEMORYALLOWANCE": "Memory Allowance",
+					"MEMORYRESERVED": "Reserved Memory",
+					"MEMORYCACHE": "% Memory Cache",
+					"MEMORYMINIMUM": "Minimum Memory",
+					"CURRENTILEVEL": "Current i.LEVEL",
+					"LASTILEVEL": "Last i.LEVEL",
+					"4DSERVER": "4D Server",
+					"DATEUPDATE": "Date Updated",
+					"LASTDATEUPDATED": "Last Date Updated",
+					"MOBILE": "Mobile",
+					"STORECONTROLLER": "Store Controller",
+					"AUTOBARCODE": "Auto Barcode",
+					"MANUALBARCODE": "Manual Barcode",
+					"MULTIBARCODE": "Multi Barcode",
+					"SEARCHTITLE": "Search for Usage",
+					"ONSTOP": "On Stop",
+					"BACKUPTIME": "Backup Time"
+			},
+			"BUTTON": {
+					"SAVE": "Save Changes",
+					"SEARCH": "Search",
+					"REPORTING": "Reporting"
+			}
+	},
+	"RELEASENOTES": {
+			"LABEL": {
+					"SEARCH": "Search",
+					"GENERATE": "Generate",
+					"FROMVERSION": "From Version",
+					"TOVERSION": "To Version",
+					"EDITCLOSING": "Edit Closing Statement",
+					"TITLE": "Title",
+					"SUMMARY": "Summary"
+			}
+	},
+	"HOSTDETAIL": {
+			"LABEL": {
+					"CODE": "Host Code",
+					"NAME": "Host Name",
+					"PREFIX": "Host Prefix"
+			}
+	},
+	"DEPARTMENTDETAIL": {
+			"LABEL": {
+					"DEPARTMENTNAME": "Department Name",
+					"ACCOUNTNAME": "Account Name",
+					"FTPURL": "FTP URL",
+					"SALESUSER": "Sales User",
+					"SALESPASS": "Sales Password",
+					"SALESPROCESSTIME": "Sales Process Time",
+					"PLUUSER": "PLU User",
+					"PLUPASS": "PLU Password",
+					"PLUPROCESSTIME": "PLU Process Time"
+			}
+	},
+	"HOSTBRANDDETAIL": {
+			"LABEL": {
+					"HOST": "Host",
+					"DEPARTMENTCODE": "Department Code",
+					"SUBDEPARTMENTCODE": "Sub Department Code",
+					"SUBDEPARTMENTNAME": "Sub Department Name",
+					"DUMPCODE": "Dump Code",
+					"EANPREFIX": "EAN Prefix",
+					"FTPURL": "FTP URL",
+					"FTPUSER": "FTP Username",
+					"FTPPASS": "FTP Password",
+					"FILENAMEEXAMPLE": "Filename Example",
+					"INACTIVEDATE": "Inactive Date",
+					"ACTIVE": "Active",
+					"WEB": "Web",
+					"STORES": "Stores"
+			}
+	},
+	"NOTIFICATION": {
+		"MARKALL": "Mark All as Read",
+		"LOADMORE": "Load More",
+		"NOMORE": "None Remaining",
+		"NONE": "No Notifications found!",
+		"OPTION": {
+			"ALL": "All",
+			"READ": "Read",
+			"UNREAD": "Unread"
+		}
+	},
+	"SEARCHCHANGE": {
+		"TITLE": "Change Request Search"
+	},
+	"SEARCHTICKET": {
+		"TITLE": "Ticket Search",
+		"CREATEDDATE": "Created Date",
+		"FROM": "From",
+		"TO": "To"
+	},
+	"TICKETAPPLYSELECTION": {
+		"TITLE": "Apply Selection"
+	},
+	"TICKETCLOSE": {
+		"TITLE": "Close Ticket",
+		"CLOSINGSTATEMENT": "Closing Statement"
+	}
 }
