@@ -19,6 +19,7 @@
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
     "@angular/material": "^13.3.0",
+    "@angular/language-service": "~13.3.0",
     "@ng-bootstrap/ng-bootstrap": "^12.1.2",
     "@fortawesome/fontawesome-pro": "^6.1.1",
     "rxjs": "~7.5.0",
