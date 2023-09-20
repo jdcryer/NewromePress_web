@@ -107,10 +107,7 @@ export class SmartDataListComponent implements OnInit, OnDestroy {
   public relateCount: IRelateCount[] = [];
   public relateMenuSource: IMenuDefinition[] = [];
   public selectedTabId: number = -1;
-  public gridHeight = `${minResult(
-    window.innerHeight - environment.usedHeight,
-    250
-  )}px`;
+  public gridHeight = `${minResult(window.innerHeight - environment.usedHeight, 250 )}px`;
 
   private userData: IUserSettings;
   private browseState: IBrowseState;
@@ -194,6 +191,9 @@ export class SmartDataListComponent implements OnInit, OnDestroy {
     this.userData = this.dataService.getStoredData('userSettings');
     this.simpleFilterHistory = this.browseState.searchHistory;
     this.atag_Link = document.getElementById('atag_Link') as HTMLAnchorElement;
+
+    const usedHeight = (this.hideTabBar) ? (environment.usedHeight - 39) : environment.usedHeight;
+    this.gridHeight = `${minResult(window.innerHeight - usedHeight, 250 )}px`;
   }
 
   ngAfterViewInit(): void {
@@ -722,10 +722,8 @@ export class SmartDataListComponent implements OnInit, OnDestroy {
       setTimeout(this.resizeend, this.delta);
     } else {
       this.timeout = false;
-      this.gridHeight = `${minResult(
-        window.innerHeight - environment.usedHeight,
-        250
-      )}px`;
+      const usedHeight = (this.hideTabBar) ? (environment.usedHeight - 39) : environment.usedHeight;
+      this.gridHeight = `${minResult(window.innerHeight - usedHeight, 250 )}px`;
     }
   };
 

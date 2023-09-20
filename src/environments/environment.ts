@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   smartTheme: 'bootstrap',
   lang: 'en',
-  usedHeight: 250,
+  usedHeight: 230,
   apiSettings: {
     endpoint: 'http://localhost:8080/app/'
   },

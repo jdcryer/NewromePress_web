@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { minResult } from 'src/app/generic-functions';
-import { GridComponent, GridRow } from 'smart-webcomponents-angular/grid';
+import { GridComponent } from 'smart-webcomponents-angular/grid';
 
 @Component({
   selector: 'app-grid-wrapper',
@@ -14,10 +13,6 @@ export class GridWrapperComponent implements OnInit {
   @ViewChild('smartGrid', { static: false, read: GridComponent }) smartGrid!: GridComponent;
 
   public smartTheme = environment.smartTheme;
-  public gridHeight = `${minResult(
-    window.innerHeight - environment.usedHeight,
-    250
-  )}px`;
 
   public columns = [];
   public gridSource = {};
