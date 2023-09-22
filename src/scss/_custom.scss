@@ -31,6 +31,8 @@ body {
   // --cui-offcanvas-width: 200px;
 
   --smart-docking-layout-default-width: 100%;
+
+  --smart-button-padding: 0.25rem 0.5rem;
 }
 
 div.smart-menu-item-label-element > span > i {
@@ -43,6 +45,16 @@ smart-file-upload {
 smart-menu:not(.smart-angular){
   display: none;
 }
+
+.smart-file {
+  font-size: 0.74375rem;
+  padding: 0.25rem 0.5rem !important;
+};
+
+.smart-button {
+  font-size: 0.74375rem;
+  border-radius: 0.25rem;
+};
 
 .smart-grid-sm {
   --smart-font-size: 0.74375rem;

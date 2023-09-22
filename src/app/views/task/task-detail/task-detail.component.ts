@@ -17,6 +17,7 @@ import { EditorComponent } from 'smart-webcomponents-angular/editor';
 export class TaskDetailComponent implements OnInit {
 
 	@ViewChild('gridComm', { read: GridComponent, static: true }) gridComm: GridComponent;
+	@ViewChild('gridFile', { read: GridComponent, static: true }) gridFile: GridComponent;
 
 	public taskData!: ITask;
 	public titleData!: ITitle;
@@ -31,6 +32,10 @@ export class TaskDetailComponent implements OnInit {
 	public commList: IComm[] = [];
 	public fileDisplaySrc = '';
 	public commNoteDisabled: boolean = true;
+	public previewFileTypes = [ '.pdf', '.png', '.jpg', '.jpeg', '.svg' ];
+	public fileUploadUrl: string = '';
+	public fileUploadDisabled: boolean = true;
+  private atag_Link: HTMLAnchorElement;
 
 	constructor(private route: ActivatedRoute, private messageBox: MessageBoxService,
 		private dataService: DataService) { }
@@ -84,6 +89,13 @@ export class TaskDetailComponent implements OnInit {
 					this.contactData = newContact()
 					this.contactData.salutation = '';
 				};
+				this.fileUploadUrl = `${environment.baseUrlTemp}fileUpload?table=task&id=${this.taskData.id}`;
+				this.fileUploadDisabled = false;
+
+				this.dataService.getData('file', `fk_record=${this.taskData.id}`, (response) => {
+					this.fileList = response.response.file;
+				});
+
 			} else {
 				//New record
 				this.taskData = newTask();
@@ -98,22 +110,43 @@ export class TaskDetailComponent implements OnInit {
 				if(index >= 0) this.buttons[index].enabled = false;
 			}
 		});
-		this.dataService.getData('file', `fk_record=${this.taskData.id}`, (response) => {
-			this.fileList = response.response.file;
-		});
-}
+		this.atag_Link = document.getElementById('atag_Link') as HTMLAnchorElement;
+	}
 
 	fileClick(event: any): void {
 		this.fileSelectAction(event.detail.id);
 	};
 	
+	fileUploadComplete(event: any): void {
+		if(event.detail.status == 200) {
+			this.gridFile.clearSelection();
+			this.selectedFile = newFile();
+			this.fileDisplaySrc = '';
+
+			this.dataService.getData('file', `fk_record=${this.taskData.id}`, (response) => {
+				this.fileList = response.response.file;
+			});
+
+    }else {
+      this.messageBox.showError('Error uploading attachment!');
+    }
+	};
+
 	fileSelectAction(index: number): void {
 		this.selectedFile = this.fileList[index];
-		if(this.selectedFile.fileType == '.pdf') {
+		if(this.previewFileTypes.indexOf(this.selectedFile.fileType) >= 0) {
 			this.fileDisplaySrc = (this.selectedFile.cdnUrl) ? this.selectedFile.cdnUrl : '';
 		}else {
 			this.fileDisplaySrc = '';
 		}
+	};
+
+	btnDownloadFile(): void {
+		if(this.selectedFile.cdnUrl != '') {
+			this.atag_Link.href = this.selectedFile.cdnUrl!;
+			this.atag_Link.download = `${this.selectedFile.name}${this.selectedFile.fileType}`;
+			this.atag_Link.click();
+		};
 	};
 
 	commClick(event: any): void {

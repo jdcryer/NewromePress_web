@@ -4,7 +4,7 @@ export const environment = {
   lang: 'en',
   usedHeight: 230,
   apiSettings: {
-    endpoint: 'https://supportbase.ilevelportal.co.uk/app/'
+    endpoint: `${document.location.origin}/app/`
   },
-  baseUrlTemp: 'https://supportbase.ilevelportal.co.uk'
+  baseUrlTemp: `${document.location.origin}/`
 };

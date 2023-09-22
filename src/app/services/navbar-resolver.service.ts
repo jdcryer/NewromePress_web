@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { DataService } from './data.service';
 import { IUserSettings, INavData } from "../interfaces/smart-data-list";
+import { environment } from "src/environments/environment";
 
 
 @Injectable({
@@ -24,7 +25,7 @@ export class NavBarResolver implements Resolve<any> {
         nav.push({ name: 'Admin', url: '/system-admin', icon: 'fa-light fa-cogs' });
       };
 
-      nav.push({ name: 'Logout', fullUrl: document.location.origin + '/WEB_REDIRECT/LOGOUT', icon: 'fa-light fa-caret-square-left' });
+      nav.push({ name: 'Logout', fullUrl: `${environment.baseUrlTemp}WEB_REDIRECT/LOGOUT`, icon: 'fa-light fa-caret-square-left' });
 
 			return nav;
 		}));
