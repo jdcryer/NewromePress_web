@@ -19,15 +19,12 @@ export class NavBarResolver implements Resolve<any> {
 			let nav: INavData[] = [];
 
       nav.push({ name: 'Tasks', url: '/task', icon: 'fa-light fa-clipboard-list' });
-			nav.push({ name: 'Admin', url: '/system-admin', icon: 'fa-light fa-cogs' });
 
-			switch(userSettings.type) {
-				case 'a user type': {
-					//Add elements to nav
+      if(userSettings.username == 'Designer') {
+        nav.push({ name: 'Admin', url: '/system-admin', icon: 'fa-light fa-cogs' });
+      };
 
-					break;
-				}
-			}
+      nav.push({ name: 'Logout', fullUrl: document.location.origin + '/WEB_REDIRECT/LOGOUT', icon: 'fa-light fa-caret-square-left' });
 
 			return nav;
 		}));

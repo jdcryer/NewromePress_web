@@ -230,7 +230,8 @@ export interface IDataListButton {
 
 export interface INavData {
   name: string;
-  url: string;
+  url?: string;
+  fullUrl?: string;
   icon: string;
   children?: INavData[];
 };

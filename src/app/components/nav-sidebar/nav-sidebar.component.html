@@ -1,7 +1,7 @@
 <div class="sidebar-wrapper">
   <!-- Brand Image -->
   <div class="brand-image-wrapper">
-    <a href="#/dashboard">
+    <a href="#/tasks">
       <img
         [src]="brandImageSrc"
         [width]="brandImageWidth"
@@ -13,14 +13,22 @@
   <!-- Nav Options -->
 
   <div class="nav-options-wrapper">
+    <ng-container *ngFor="let navItem of navItems">
+      <a *ngIf="navItem.url"
+        class="sidebar-nav-item"
+        [routerLink]="navItem.url"
+        routerLinkActive="sidebar-nav-item-active">
+        <i [class]="navItem.icon" class="sidebar-nav-icon"></i>
+        {{ navItem.name }}
+      </a>
 
-    <a *ngFor="let navItem of navItems"
-      class="sidebar-nav-item"
-      [routerLink]="navItem.url"
-      routerLinkActive="sidebar-nav-item-active">
-      <i [class]="navItem.icon" class="sidebar-nav-icon"></i>
-      {{ navItem.name }}
-    </a>
+      <a *ngIf="navItem.fullUrl"
+        class="sidebar-nav-item"
+        [href]="navItem.fullUrl">
+        <i [class]="navItem.icon" class="sidebar-nav-icon"></i>
+        {{ navItem.name }}
+      </a>
+    </ng-container>
 
   </div> 
 
