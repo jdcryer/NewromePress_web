@@ -26,5 +26,4 @@ export class MainContainerComponent implements OnInit {
   ngOnDestroy(): void {
     this.componentSubs.unsubscribe();
   };
-
 };

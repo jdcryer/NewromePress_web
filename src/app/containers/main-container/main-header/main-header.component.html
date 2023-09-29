@@ -3,6 +3,10 @@
     <div class="d-flex justify-content-between">
       <div></div>
       <div>
+        <span class="pb-1">Welcome {{ userSettings.username }}</span>
+        <button type="button" class="notiToggler btn btn-primary notiButton"  (click)="helpClicked()">
+          <i class="fa fa-question-circle"></i>
+        </button>
         <button type="button" class="notiToggler btn btn-primary notiButton" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
           <i class="fa fa-bell notiBadge"></i>
         </button>
