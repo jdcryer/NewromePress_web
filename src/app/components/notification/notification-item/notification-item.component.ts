@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { createAgeString } from 'src/app/generic-functions';
 import { INotification } from 'src/app/interfaces/table-definitions';
 import { DataService } from 'src/app/services/data.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-notification-item',
@@ -29,11 +30,11 @@ export class NotificationItemComponent implements OnInit {
     this.update();
 	}
 
-	ngAfterViewInit(): void { 
+	ngAfterViewInit(): void {
 		$(`#delete${this.myIndex}`).tooltip();
 		$(`#markAs${this.myIndex}`).tooltip();
 	}
-	
+
 	postMarkAsRead(): void {
 		const postData = {
 			id: this.notificationData.id,
@@ -57,14 +58,23 @@ export class NotificationItemComponent implements OnInit {
           target = 'change/change-detail';
           break;
       }
-      case 'ticketNew' : 
+      case 'ticketNew' :
       case 'ticketUpdate' : {
           target = 'ticket/ticket-detail';
           break;
       }
+			case 'exportview': {
+				target = `${environment.baseUrlTemp}reports/${this.notificationData.detail.filename}`;
+				externalLink = true;
+				break;
+			};
 		}
 		if(!this.notificationData.read) this.postMarkAsRead();
-		this.router.navigate( [ `${target}/${this.notificationData.fk_record}` ] );
+		if(externalLink) {
+			window.open(target);
+		}else {
+			this.router.navigate( [ `${target}/${this.notificationData.fk_record}` ] );
+		}
 	}
 
 	markAsRead(event: any){
@@ -75,18 +85,17 @@ export class NotificationItemComponent implements OnInit {
 	deleteThis(event: any) {
 		event.stopPropagation();
 	};
-	
+
 	calcClasses(){
 		let a = this.myIndex / 2;
 		let b = Math.round(this.myIndex / 2);
 		this.wrapperClass += (a != b) ? 'notiWrapperGray ' : 'notiWrapperWhite ';
 		this.wrapperClass += (this.notificationData.read) ? 'notiWrapperRead' : 'notiWrapperUnread';
-        
+
 		this.markAsReadIcon = (this.notificationData.read) ? 'fa fa-flag' : 'fa fa-check';
 		this.markAsReadTooltip = (this.notificationData.read) ? 'Mark as Unread' : 'Mark as Read';
 		switch(this.notificationData.type) {
-			case 'filedownload':
-			case 'fileupdate': {
+			case 'exportview': {
 				this.iconClass = 'fa fa-file-alt fa-lg';
 				break;
 			}
@@ -100,7 +109,7 @@ export class NotificationItemComponent implements OnInit {
 			}
 		}
 	}
-	
+
 	public update(){
     let obj = createAgeString(new Date(this.notificationData.createdTS));
     // if more than approx 2 days old show date string, else, age

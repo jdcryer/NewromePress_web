@@ -31,7 +31,9 @@ export class NotificationListComponent implements OnInit {
   constructor(private dataService: DataService, private messageBox: MessageBoxService) { }
 
   ngOnInit() {
-		this.updateTimestamp = new Date().toISOString();
+		let diff = (new Date()).getTimezoneOffset() * 60000;
+		let localISOTime = (new Date(Date.now() - diff)).toISOString().slice(0,-1);
+		this.updateTimestamp = localISOTime;
 		this.userSettings = this.dataService.getStoredData('userSettings');
 		this.getNotificationCount();
 		this.getSelectToken();
@@ -44,7 +46,7 @@ export class NotificationListComponent implements OnInit {
 		let queryString = 'order_by=createdTS;<';
 		if(this.selectOption === 'Read') queryString += '&read=true';
 		if(this.selectOption === 'Unread') queryString += '&read=false';
-		
+
 		this.dataService.getData('notification', queryString, (response) => {
 			this.selectToken = response.selectToken;
 			this.getNotifications();
@@ -74,7 +76,9 @@ export class NotificationListComponent implements OnInit {
 		this.dataService.getData('notification', 'order_by=createdTS;<', (response) => {
 			if(response.response.notification) {
 				this.notifications.unshift(...response.response.notification);
-				this.updateTimestamp = new Date().toISOString();
+				let diff = (new Date()).getTimezoneOffset() * 60000;
+				let localISOTime = (new Date(Date.now() - diff)).toISOString().slice(0,-1);
+				this.updateTimestamp = localISOTime;
 			}
 		}, null, queryData);
 	};
@@ -92,7 +96,7 @@ export class NotificationListComponent implements OnInit {
 	itemStateChange(event: any){
     this.update();
 	};
-	
+
 	itemDeleted(index: any){
     this.notifications.splice(index, 1);
   };

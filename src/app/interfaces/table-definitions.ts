@@ -107,7 +107,7 @@ export interface IComm {
 	date: string;
 	text: string;
 }
-	
+
 	export function newComm(): IComm {
 		return {
 		direction: '',
@@ -116,7 +116,7 @@ export interface IComm {
 		}
 	};
 
-export interface ILookupList { 
+export interface ILookupList {
 	id?: string;
 	fk_client: string;
 	name: string;
@@ -179,7 +179,7 @@ export interface IAddress {
 	county: string;
 	postcode: string;
 	countryCode?: string;
-	telephone?: string;	
+	telephone?: string;
 	email?: string;
 }
 
@@ -187,7 +187,7 @@ export function newAddress(): IAddress {
 	return {
 		add1: '',
 		add2: '',
-		add3: '',		
+		add3: '',
 		add4: '',
 		town: '',
 		county: '',
@@ -443,7 +443,7 @@ export function newServer(): IServer {
 		maxUsers: 0,
 		usedUsers: 0,
 		addInfo: '',
-		detail: {}	
+		detail: {}
 	}
 };
 
@@ -534,4 +534,7 @@ export interface INotification {
 	message: string;
 	createdTS: string;
 	read: boolean;
+  detail: {
+		filename?: string;
+	};
 };

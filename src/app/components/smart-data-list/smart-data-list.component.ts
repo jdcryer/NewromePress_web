@@ -66,7 +66,7 @@ export class SmartDataListComponent implements OnInit, OnDestroy {
   @Input('baseSortString') baseSortString: string = '';
   @Input('hideTabBar') hideTabBar: boolean = false;
   @Input('hideFilterInput') hideFilterInput: boolean = false;
-  @Input('hideRecordCount') hideRecordCount: boolean = false; 
+  @Input('hideRecordCount') hideRecordCount: boolean = false;
   @Input('buttons') buttons: IDataListButton[] = [];
 
   @Input('gridDef') set _gridDef(value: IGridDefiniton) {
@@ -165,7 +165,7 @@ export class SmartDataListComponent implements OnInit, OnDestroy {
         this.selectedTabId = this.gridDef.defaultTab;
         this.selectedTab = this.gridDef.tabList[index];
         this.browseState.tabId = this.selectedTabId;
-        this.applySelectedTab();    
+        this.applySelectedTab();
       }
 
     } else {
@@ -177,7 +177,7 @@ export class SmartDataListComponent implements OnInit, OnDestroy {
         this.selectedTab = this.gridDef.tabList[index];
       }
       if(this.browseState.refreshSelection) {
-        this.applySelectedTab();    
+        this.applySelectedTab();
         this.browseState.refreshSelection = false;
       }else {
         this.loadToken = true;
@@ -340,7 +340,7 @@ export class SmartDataListComponent implements OnInit, OnDestroy {
       checkBoxes: {
         enabled: true,
         selectAllMode: 'all',
-      }  
+      }
     }
   };
 
@@ -359,7 +359,7 @@ export class SmartDataListComponent implements OnInit, OnDestroy {
     if(this.hideTabBar) {
       this.selectedTabId = -1;
       let index = this.gridDef.tabList.findIndex(e => { return e.id == this.selectedTabId });
-      this.selectedTab = this.gridDef.tabList[index];   
+      this.selectedTab = this.gridDef.tabList[index];
     }
     this.applySelectedTab();
   }
@@ -403,7 +403,7 @@ export class SmartDataListComponent implements OnInit, OnDestroy {
         if(this.userData.prefs.sidebarAccess[count.listing] !== undefined) bAdd = this.userData.prefs.sidebarAccess[count.listing];
       };
       if(bAdd) {
-        let menuItem: IMenuDefinition = { 
+        let menuItem: IMenuDefinition = {
           value: count.table, label: `${count.label} [${count.count}]`, disabled: (count.count === 0)
         };
         this.relateMenuSource.push(menuItem);
@@ -426,7 +426,7 @@ export class SmartDataListComponent implements OnInit, OnDestroy {
     if(event.detail) {
       if(event.detail.data) {
         let sortString = '';
-        
+
         event.detail.data.forEach(sortLine => {
           let datafield = sortLine.dataField;
           if(this.sortPropertyOverride) datafield = this.sortPropertyOverride(datafield);
@@ -537,7 +537,7 @@ export class SmartDataListComponent implements OnInit, OnDestroy {
     }else {
       if(this.baseSortString != '') queryString += (queryString == '') ? this.baseSortString : `&${this.baseSortString}`;
     };
-    
+
     return queryString;
   };
 
@@ -648,12 +648,11 @@ export class SmartDataListComponent implements OnInit, OnDestroy {
               if (!(eventData.param == 'exportview')) {
                 let queryStr = `selectToken=${this.browseState.selectToken}&viewId=${this.gridDef.viewData.id}&format=${eventData.param}`;
                 this.dataService.getData('exportView', queryStr, (response) => {
-                  if (response.filename) {
-                    const link = `${window.location.origin}/reports/${response.filename}`;
-                    this.atag_Link.href = link;
-                    this.atag_Link.download = response.filename;
-                    this.atag_Link.click();
-                  }
+                  if (response.success) {
+										this.messageBox.showSuccess('Export Queued', 'You will receive a notification when the export is ready for download');
+                  }else {
+										this.messageBox.showSuccess('Export Failed', response.error);
+									};
                 });
               }
               break;
@@ -842,8 +841,8 @@ export class SmartDataListComponent implements OnInit, OnDestroy {
     viewContainerRef.clear();
 
     const grid = viewContainerRef.createComponent<GridWrapperComponent>(GridWrapperComponent);
-    
-    let input = { 
+
+    let input = {
       theme: this.smartTheme,
       dataSource: new Smart.DataAdapter({
         mapChar: '.',
