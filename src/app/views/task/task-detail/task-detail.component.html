@@ -190,7 +190,7 @@
 							</div>
 
 							<div class="col">
-								
+
 								<div class="form-group row">
 									<label class="col col-form-label col-form-label-sm">{{ 'COMMDETAIL.LABEL.NOTE' | translate }}: </label>
 								</div>
@@ -250,6 +250,29 @@
 						</div>
 
 					</smart-tab-item>
+
+          <smart-tab-item label="Involved Contacts">
+						<div class="row">
+							<div class="col">
+
+                <div style="height: 190px">
+									<smart-grid #gridContacts
+										class="smart-grid-sm"
+										id="contactList"
+										[theme]="smartTheme"
+										[dataSource]="contactSource"
+										[columns]="contactColumns"
+										[appearance]="gridSettings.appearance"
+										[behavior]="gridSettings.behavior"
+										[selection]="gridSettings.selection">
+									</smart-grid>
+								</div>
+
+              </div>
+              <div class="col"></div>
+            </div>
+          </smart-tab-item>
+
 				</smart-tabs>
 
 			</div>

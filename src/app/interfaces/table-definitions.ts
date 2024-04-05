@@ -12,6 +12,7 @@ export interface ITask {
 	task_file?: ITaskFile[];
 	task_contactAssigned?: IContact;
 	task_title?: ITitle;
+  task_taskContact?: ITaskContact[];
 }
 
 export function newTask(): ITask {
@@ -28,6 +29,14 @@ export function newTask(): ITask {
 		task_file: []
 	};
 }
+
+export interface ITaskContact {
+  id: string;
+  fk_task: string;
+  fk_contact: string;
+  role: string;
+  taskContact_contact?: IContact;
+};
 
 export interface ITaskFile {
 	name: string;

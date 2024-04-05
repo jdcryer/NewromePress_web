@@ -38,9 +38,8 @@ export class DetailResolverService implements Resolve<any> {
       let queryString = '';
 
       switch (target) {
-        case 'company': {
-          queryString =
-            '&fields=*,company_contact.*,company_brand.*';
+        case 'task': {
+          queryString ='&fields=*,task_taskContact.*,task_taskContact.taskContact_contact.*';
           break;
         }
         case 'host': {
@@ -57,7 +56,7 @@ export class DetailResolverService implements Resolve<any> {
             if(data.response) {
               if(data.response[target]) {
                 console.log(data);
-                return of(data);    
+                return of(data);
               }else {
                 //Good response from server, but record not found, reroute to listing page and display error message
                 this.messageBox.showError('Record not found!', 'The record you are trying to access has likely been deleted / merged with another');

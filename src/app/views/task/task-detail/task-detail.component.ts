@@ -38,39 +38,59 @@ export class TaskDetailComponent implements OnInit {
   private atag_Link: HTMLAnchorElement;
 
 	constructor(private route: ActivatedRoute, private messageBox: MessageBoxService,
-		private dataService: DataService) { }
-		private ignoreChange: boolean = false;
+		private dataService: DataService) { };
 
-		public gridSettings = {
-			appearance: {
-				alternationStart: 0,
-				alternationCount: 2
-			},
-			behavior: {
-				columnResizeMode: 'growAndShrink'
-			},
-			selection: {
-				enabled: true,
-				allowRowSelection: true,
-				mode: 'one'
-			},
-			editing: {
-				enabled: true
-			}
-		};
-	
-		public fileColumns: GridColumn[] = [
-			{ label: 'Name', dataField: 'name', width: '25%', allowEdit: false },
-			{ label: 'Path', dataField: 'path', width: '60%', allowEdit: false},
-			{ label: 'Type', dataField: 'fileType', width: '15%', allowEdit: false },
-		];
+  private ignoreChange: boolean = false;
 
-		public commColumns: GridColumn[] = [
-			{ label: 'Direction', dataField: 'direction', width: '20%', allowEdit: false },
-			{ label: 'Date', dataField: 'date', width: '30%', allowEdit: false},
-			{ label: 'Text', dataField: 'text', width: '50%', allowEdit: false },
-		];
-	
+  public gridSettings = {
+    appearance: {
+      alternationStart: 0,
+      alternationCount: 2
+    },
+    behavior: {
+      columnResizeMode: 'growAndShrink'
+    },
+    selection: {
+      enabled: true,
+      allowRowSelection: true,
+      mode: 'one'
+    },
+    editing: {
+      enabled: true
+    }
+  };
+
+  public fileColumns: GridColumn[] = [
+    { label: 'Name', dataField: 'name', width: '25%', allowEdit: false },
+    { label: 'Path', dataField: 'path', width: '60%', allowEdit: false},
+    { label: 'Type', dataField: 'fileType', width: '15%', allowEdit: false },
+  ];
+
+  public commColumns: GridColumn[] = [
+    { label: 'Direction', dataField: 'direction', width: '20%', allowEdit: false },
+    { label: 'Date', dataField: 'date', width: '30%', allowEdit: false},
+    { label: 'Text', dataField: 'text', width: '50%', allowEdit: false },
+  ];
+
+  public contactDataFields = [
+    { name: 'id', dataType: 'string' },
+    { name: 'fk_task', dataType: 'string' },
+    { name: 'fk_contact', dataType: 'string' },
+    { name: 'role', dataType: 'string' },
+    { name: 'taskContact_contact', dataType: 'object' },
+    { name: 'salutation', dataType: 'string', map: 'taskContact_contact.salutation' }
+  ];
+  public contactSource = new Smart.DataAdapter({
+    mapChar: '.',
+    dataFields: this.contactDataFields,
+    id: 'id',
+    dataSource: [],
+  });
+  public contactColumns: GridColumn[] = [
+    { label: 'Contact', dataField: 'salutation', width: '50%' },
+    { label: 'Role', dataField: 'role', width: '50%' },
+  ];
+
 	ngOnInit(): void {
 
 		this.route.data.subscribe((data: any) => {
@@ -89,6 +109,14 @@ export class TaskDetailComponent implements OnInit {
 					this.contactData = newContact()
 					this.contactData.salutation = '';
 				};
+        if(this.taskData.task_taskContact) {
+          this.contactSource = new Smart.DataAdapter({
+            mapChar: '.',
+            dataFields: this.contactDataFields,
+            id: 'id',
+            dataSource: this.taskData.task_taskContact,
+          });
+        };
 				this.fileUploadUrl = `${environment.baseUrlTemp}fileUpload?table=task&id=${this.taskData.id}`;
 				this.fileUploadDisabled = false;
 
@@ -116,7 +144,7 @@ export class TaskDetailComponent implements OnInit {
 	fileClick(event: any): void {
 		this.fileSelectAction(event.detail.id);
 	};
-	
+
 	fileUploadComplete(event: any): void {
 		if(event.detail.status == 200) {
 			this.gridFile.clearSelection();
@@ -154,7 +182,7 @@ export class TaskDetailComponent implements OnInit {
 		this.selectedCommIndex = event.detail.id;
 		this.commNoteDisabled = (this.selectedCommData.direction != 'In');
 	};
-	
+
 	commSelectAction(index: number): void {
 		this.selectedFile = this.fileList[index];
 	};
@@ -209,7 +237,7 @@ export class TaskDetailComponent implements OnInit {
 				this.taskData.id = response.id;
 				this.pendingChanges = false;
 				let index = this.buttons.findIndex(e => { return e.code === 'SAVE' });
-				if(index >= 0) this.buttons[index].enabled = false;  
+				if(index >= 0) this.buttons[index].enabled = false;
 				this.messageBox.showSuccess('Task Saved');
 			});
 	};
@@ -220,7 +248,7 @@ export class TaskDetailComponent implements OnInit {
 		{ code: 'NEXTRECORD' },
 		{ code: 'LASTRECORD' },
 		{ code: 'EXIT' },
-		{ code: 'SAVE', callback: this.saveButtonClick, enabled: false },  
+		{ code: 'SAVE', callback: this.saveButtonClick, enabled: false },
 	];
 
 }
