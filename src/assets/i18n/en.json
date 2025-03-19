@@ -359,5 +359,11 @@
 	"TICKETCLOSE": {
 		"TITLE": "Close Ticket",
 		"CLOSINGSTATEMENT": "Closing Statement"
+	},
+	"DASH": {
+			"LABEL": {
+					"FROMDATE": "Ffrom Date",
+					"TODATE": "To Date"
+			}
 	}
 }

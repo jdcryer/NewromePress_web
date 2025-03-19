@@ -1,0 +1,29 @@
+<div class="row">
+	<div class="col-sm-4">
+		<div class="card">
+			<div class="card-body">
+				<div class="row"><!--Put date selection objects in here with default for current month 1st to current date-->
+					<div class="col-sm-6">
+						<div class="form-group row">
+							<label class="col-sm-4 col-form-label">{{ 'DASH.LABEL.FROMDATE' | translate }}: </label>
+							<div class="col-sm-8">
+								<input class="form-control" type="date" [(ngModel)]="fromDate" (change)="selectDateChange($event)"/>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group row">
+							<label class="col-sm-4 col-form-label">{{ 'DASH.LABEL.TODATE' | translate }}: </label>
+							<div class="col-sm-8">
+								<input class="form-control" type="date" [(ngModel)]="toDate" (change)="selectDateChange($event)"/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- <app-dashboard *ngIf="bShowDashboardData" [dashboardData]="dashboardData"></app-dashboard> -->
+<!--app-dashboard-web-company *ngIf="bShowCompanyStats" [dashboardData]="dashboardData" [baseTop10Options]="baseTop10Options"></app-dashboard-web-company-->
