@@ -362,7 +362,7 @@
 	},
 	"DASH": {
 			"LABEL": {
-					"FROMDATE": "Ffrom Date",
+					"FROMDATE": "From Date",
 					"TODATE": "To Date"
 			}
 	}
