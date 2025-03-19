@@ -2,11 +2,13 @@ import { Component, OnInit, Input } from '@angular/core';
 import { IChartOptions } from 'src/app/interfaces/dashboard';
 import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
+import { ActivatedRoute } from '@angular/router';
+import { dateToDateString } from 'src/app/generic-functions';
 
 @Component({
 	selector: 'app-dashboard-component',
-	templateUrl: './dashboard.html',
-	styleUrls: ['./dashboard.scss']
+	templateUrl: './dashboard.component.html',
+	styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
 
@@ -14,20 +16,27 @@ export class DashboardComponent implements OnInit {
 	@Input('baseTop10Options') baseTop10Options: Partial<IChartOptions>;
 
 	public bShowDashboardData = false;
-	public toDate : Date = new Date();
-	public fromDate : Date = new Date();
-	
+	public toDate = '';
+	public fromDate = '';
+
 	private componentSubs = new Subscription();
 
-	constructor(private dataService: DataService) { }
+	constructor(private dataService: DataService, private route: ActivatedRoute) { }
 
 	ngOnInit() {
-		let toDate = new Date();//Gets the current date
-		let fromDate = toDate.setDate(1);//Sets from date to the start of the current month.
+		let date = new Date()
+    date.setDate(1);
+		this.fromDate = dateToDateString(date); //Sets from date to the start of the current month.
+    this.toDate = dateToDateString(new Date()); //Gets the current date
 
-		// this.dataService.getData('company', 'fields=id,name&order_by=name;>&dashboardType=web', (response) => {
-		// 	this.companies = response.response.company;
-		// });
+    this.route.data.subscribe((data: any) => {
+      //data returned by API call in resolver
+
+      this.applyDashboardData()
+
+
+
+    });
 	}
 
 	ngOnDestroy() {
@@ -37,10 +46,15 @@ export class DashboardComponent implements OnInit {
 	selectDateChange(): void {
 		let queryString = `fromDate=${this.fromDate}&toDate=${this.toDate}`;
 		this.dataService.getData('dashboarddata', queryString, (response) => {
+      this.applyDashboardData();
 			this.dashboardData = response;
 			this.bShowDashboardData = true
 			console.log(this.dashboardData);
 		});
-	}
-	
+	};
+
+  applyDashboardData() {
+
+  };
+
 }

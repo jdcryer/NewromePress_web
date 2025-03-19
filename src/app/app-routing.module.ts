@@ -4,7 +4,6 @@ import { LoginContainerComponent } from './containers/login-container/login-cont
 import { MainContainerComponent } from './containers/main-container/main-container.component';
 import { NavBarResolver } from './services/navbar-resolver.service';
 import { UserLoginGuard } from './services/user-login-guard.service';
-// import { DashboardComponent } from './views/dashboard/dashboard';
 
 const routes: Routes = [
   {
@@ -34,6 +33,10 @@ const routes: Routes = [
         path: 'system-admin',
         loadChildren: () => import('./views/system-admin/system-admin.module').then(m => m.SystemAdminModule),
       },
+      {
+        path: 'dashboard',
+        loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule),
+      }
       // {//Not sure about this bit???
       //   path: 'dashboard',
       //   component: DashboardComponent

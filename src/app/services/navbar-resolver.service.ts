@@ -19,6 +19,7 @@ export class NavBarResolver implements Resolve<any> {
 		return this.translate.get('NAVBAR').pipe(map((data) => {
 			let nav: INavData[] = [];
 
+      nav.push({ name: 'Dashboard', url: '/dashboard', icon: 'fa-light fa-clipboard-list' });
       nav.push({ name: 'Tasks', url: '/task', icon: 'fa-light fa-clipboard-list' });
 
       if(userSettings.username == 'Designer') {

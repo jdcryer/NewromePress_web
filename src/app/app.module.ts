@@ -23,7 +23,6 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { DataService } from './services/data.service';
 import { MessageBoxService } from './services/message-box.service';
 import { AppStartService } from './services/app-start.service';
-//import { DashboardComponent } from './views/dashboard/dashboard';
 
 window.Smart.License = "8414516F-15A2-4D84-A7AF-A9A72400DB02";
 
@@ -40,7 +39,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     MainHeaderComponent,
     MainFooterComponent,
     ToastGlobalComponent
-    // DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +55,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 			loader: {
 				provide: TranslateLoader,
 				useFactory: HttpLoaderFactory,
-				deps: [ HttpClient ]	
+				deps: [ HttpClient ]
 			}
 		}),
   ],
