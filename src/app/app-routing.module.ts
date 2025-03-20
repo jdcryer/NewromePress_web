@@ -37,10 +37,6 @@ const routes: Routes = [
         path: 'dashboard',
         loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule),
       }
-      // {//Not sure about this bit???
-      //   path: 'dashboard',
-      //   component: DashboardComponent
-      // }
     ],
   },
   { path: '**', redirectTo: '404' }

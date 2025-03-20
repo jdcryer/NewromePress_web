@@ -19,14 +19,17 @@ export class NavBarResolver implements Resolve<any> {
 		return this.translate.get('NAVBAR').pipe(map((data) => {
 			let nav: INavData[] = [];
 
-      nav.push({ name: 'Dashboard', url: '/dashboard', icon: 'fa-light fa-clipboard-list' });
-      nav.push({ name: 'Tasks', url: '/task', icon: 'fa-light fa-clipboard-list' });
+		if((userSettings.username == 'Designer') || (userSettings.username == 'Michael Monos')) {
+			nav.push({ name: 'Dashboard', url: '/dashboard', icon: 'fa-light fa-clipboard-list' });
+			console.log(userSettings);
+		};
+      	nav.push({ name: 'Tasks', url: '/task', icon: 'fa-light fa-clipboard-list' });
 
-      if(userSettings.username == 'Designer') {
-        nav.push({ name: 'Admin', url: '/system-admin', icon: 'fa-light fa-cogs' });
-      };
+      	if(userSettings.username == 'Designer') {
+        	nav.push({ name: 'Admin', url: '/system-admin', icon: 'fa-light fa-cogs' });
+      	};
 
-      nav.push({ name: 'Logout', fullUrl: `${environment.baseUrlTemp}WEB_REDIRECT/LOGOUT`, icon: 'fa-light fa-caret-square-left' });
+      	nav.push({ name: 'Logout', fullUrl: `${environment.baseUrlTemp}WEB_REDIRECT/LOGOUT`, icon: 'fa-light fa-caret-square-left' });
 
 			return nav;
 		}));
