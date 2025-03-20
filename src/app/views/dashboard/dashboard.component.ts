@@ -121,7 +121,7 @@ export class DashboardComponent implements OnInit {
 		console.log(this.baseTop10Options)	  
       	this.applyDashboardData()
 		//console.log(this.dashboardData);
-		// console.log(this.top10ProdOptions)	  
+		console.log(this.top10ProdOptions)	  
 
     });
 	}
@@ -133,8 +133,8 @@ export class DashboardComponent implements OnInit {
 	selectDateChange(): void {
 		let queryString = `fromDate=${this.fromDate}&toDate=${this.toDate}`;
 		this.dataService.getData('dashboarddata', queryString, (response) => {
-      this.applyDashboardData();
-			this.dashboardData = response;
+		this.dashboardData = response;
+      	this.applyDashboardData();
 			//this.bShowDashboardData = true
 			console.log(this.dashboardData);
 		});
@@ -142,13 +142,22 @@ export class DashboardComponent implements OnInit {
 
   applyDashboardData() {
 
-	//this.top10ProdOptions = JSON.parse(JSON.stringify(this.baseTop10Options));
-	// this.top10ProdOptions = this.baseTop10Options;
-	// if (this.top10ProdOptions) {
-	// this.top10ProdOptions.series[0].data = this.dashboardData.topProducts.map(a => a.value);
-	// this.top10ProdOptions.series[1].data = this.dashboardData.topProducts.map(a => a.qty);
-	// this.top10ProdOptions.xaxis.categories = this.dashboardData.topProducts.map(a => a.code);
-	// }
+	this.top10ProdOptions = JSON.parse(JSON.stringify(this.baseTop10Options));
+	//this.top10ProdOptions = this.baseTop10Options;
+	if (this.top10ProdOptions) {
+		if (this.top10ProdOptions.series) {
+			this.top10ProdOptions.series[0].data = this.dashboardData.topProducts.map(a => a.value);
+				this.top10ProdOptions.series[1].data = this.dashboardData.topProducts.map(a => a.qty);
+				console.log("series OK")	  
+				console.log(this.top10ProdOptions.series[0].data)	  
+				console.log(this.top10ProdOptions.series[1].data)	  
+			}
+		if (this.top10ProdOptions.xaxis) {
+			this.top10ProdOptions.xaxis.categories = this.dashboardData.topProducts.map(a => a.code);
+			console.log("axis OK")	  
+			console.log(this.top10ProdOptions.xaxis.categories)	  
+		}
+	}
 	// console.log(JSON.parse(JSON.stringify(this.baseTop10Options)))	  
 	console.log(this.baseTop10Options)	  
 	console.log(this.top10ProdOptions)	  
