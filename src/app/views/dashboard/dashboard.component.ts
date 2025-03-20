@@ -144,7 +144,8 @@ export class DashboardComponent implements OnInit {
 	this.top10ProdOptions = JSON.parse(JSON.stringify(this.baseTop10Options));
 	// this.top10ProdOptions = this.baseTop10Options;
 	if (this.top10ProdOptions) {
-		if (this.top10ProdOptions.series) {
+		this.top10ProdOptions.title.text = "Top Products";
+			if (this.top10ProdOptions.series) {
 			this.top10ProdOptions.series[0].data = this.dashboardData.topProducts.map(a => a.value);
 				this.top10ProdOptions.series[1].data = this.dashboardData.topProducts.map(a => a.qty);
 			}
