@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="col-sm-10">
+	<div class="col-sm-12">
 		<div class="card">
 			<div class="card-body">
 				<div class="row"><!--Put date selection objects in here with default for current month 1st to current date-->
@@ -24,7 +24,7 @@
 			<div class="card-body">
 				<h4>Sales Overview</h4>
 				<div class="row">
-					<div class="col-4">
+					<div class="col-12">
 						<div class="row">
 							<div class="col">
 								<h5>Sales in Period</h5>
@@ -45,33 +45,28 @@
 							</div>
 							<div class="col">
 								<div class="callout callout-info mt-1">
-									<span class="text-muted">{{ dashboardData.periodSales[1].name }}</span><br>
-									<strong class="h4">{{ dashboardData.periodSales[1].value }}</strong>
+									<span class="text-muted">{{ dashboardData.periodSales[2].name }}</span><br>
+									<strong class="h4">{{ dashboardData.periodSales[2].value }}</strong>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			
-
-
-
-
 				<div class="row"><!--Top 10 Product chart-->
-					<div class="col-sm-6">
+					<div class="col-sm-12">
 						<div class="card">
 							<div class="card-body">
-								<!-- <apx-chart
+								<apx-chart
+									[title]="top10ProdOptions.title"
 									[series]="top10ProdOptions.series"
 									[chart]="top10ProdOptions.chart"
 									[xaxis]="top10ProdOptions.xaxis"
 									[yaxis]="top10ProdOptions.yaxis"
 									[dataLabels]="top10ProdOptions.dataLabels"
-									[title]="top10ProdOptions.title"
 									[tooltip]="top10ProdOptions.tooltip"
 									[legend]="top10ProdOptions.legend"
-								></apx-chart> -->
+								></apx-chart>
 							</div>	
 						</div>
 					</div>				
