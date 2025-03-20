@@ -1,15 +1,15 @@
 import {
 	ApexAxisChartSeries,
 	ApexChart,
+	ApexXAxis,
+	ApexMarkers,
+	ApexStroke,
+	ApexYAxis,
+	ApexDataLabels,
+	ApexLegend,
 	ApexFill,
 	ApexTooltip,
-	ApexXAxis,
-	ApexLegend,
-	ApexDataLabels,
-	ApexTitleSubtitle,
-	ApexYAxis,
-	ApexMarkers,
-	ApexStroke
+	ApexTitleSubtitle
 } from "ng-apexcharts";
 
 export type IChartOptions = {
@@ -20,9 +20,9 @@ export type IChartOptions = {
 	stroke?: ApexStroke;
 	yaxis: ApexYAxis | ApexYAxis[];
 	dataLabels: ApexDataLabels;
-	title: ApexTitleSubtitle;
 	legend: ApexLegend;
 	fill?: ApexFill;
 	tooltip: ApexTooltip;
+	title: ApexTitleSubtitle;
 	subtitle: ApexTitleSubtitle;
 };
