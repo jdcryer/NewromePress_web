@@ -117,12 +117,11 @@ export class DashboardComponent implements OnInit {
       //data returned by API call in resolver
 		this.dashboardData = data.dashData;
 	  
-		this.top10ProdOptions = JSON.parse(JSON.stringify(this.baseTop10Options));
-		console.log(this.baseTop10Options)	  
+		//this.top10ProdOptions = JSON.parse(JSON.stringify(this.baseTop10Options));
+		//console.log(this.baseTop10Options)	  
       	this.applyDashboardData()
 		//console.log(this.dashboardData);
-		console.log(this.dashboardData.periodSales)	  
-
+		//console.log(this.dashboardData.periodSales)	  
     });
 	}
 
